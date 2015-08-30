@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="text-center">
-        <h1>503</h1>
-        <h2>Service unavailable</h2>
+        <h1>404</h1>
+        <h2>Not found</h2>
     </div>
 @endsection
