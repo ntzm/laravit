@@ -21,7 +21,7 @@
         </div>
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="{{ route('index') }}">Frontpage <span class="sr-only">(current)</span></a></li>
+                <li class="{{ Helper::active('index') }}"><a href="{{ route('index') }}">Frontpage</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
