@@ -12,7 +12,14 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         factory(App\User::class, 20)->create()->each(function ($user) {
-            $user->posts()->save(factory(App\Post::class)->make());
+            $sub = factory(App\Sub::class)->make();
+            $sub->owner()->associate($user);
+            $sub->save();
+
+            $post = factory(App\Post::class)->make();
+            $post->user()->associate($user);
+            $post->sub()->associate($sub);
+            $post->save();
         });
     }
 }
