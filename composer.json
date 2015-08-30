@@ -6,7 +6,8 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.1.*"
+        "laravel/framework": "5.1.*",
+        "twbs/bootstrap": "3.3.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4"
@@ -28,7 +29,9 @@
             "php artisan clear-compiled"
         ],
         "post-update-cmd": [
-            "php artisan optimize"
+            "php artisan optimize",
+            "php -r \"copy('vendor/twbs/bootstrap/dist/css/bootstrap.min.css', 'public/css/vendor/bootstrap.min.css');\"",
+            "php -r \"copy('vendor/twbs/bootstrap/dist/js/bootstrap.min.js', 'public/js/vendor/bootstrap.min.js');\""
         ],
         "post-root-package-install": [
             "php -r \"copy('.env.example', '.env');\""
