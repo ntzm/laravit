@@ -1,5 +1,5 @@
 @extends('template')
 
 @section('content')
-    <h1>Front page</h1>
+    @each('partials.post', $posts, 'post')
 @endsection
