@@ -13,7 +13,7 @@
 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
-        'username' => $faker->username,
+        'username' => $faker->userName,
         'password' => bcrypt('password'),
         'remember_token' => str_random(10),
     ];
@@ -28,7 +28,7 @@ $factory->define(App\Post::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Sub::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->username,
+        'name' => $faker->userName,
     ];
 });
 
