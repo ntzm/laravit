@@ -7,5 +7,5 @@
             Joined {{ $user->created_at->diffForHumans() }}
         </div>
     </div>
-    @each('partials.post', $posts, 'post')
+    @include('partials.posts', compact('posts'))
 @endsection
