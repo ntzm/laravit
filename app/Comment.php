@@ -30,6 +30,11 @@ class Comment extends Model
         return $this->belongsTo('App\Post');
     }
 
+    public function votes()
+    {
+        return $this->hasMany('App\CommentVote');
+    }
+
     public function parent()
     {
         return $this->belongsTo('App\Comment', 'parent_id');
