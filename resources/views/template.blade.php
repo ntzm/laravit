@@ -27,8 +27,13 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Profile</a></li>
-                        <li><a href="#">Log out</a></li>
+                        @if(Auth::check())
+                            <li><a href="{{ route('users.show', Auth::user()->username) }}">Profile</a></li>
+                            <li><a href="{{ route('auth.getLogout') }}">Log out</a></li>
+                        @else
+                            <li><a href="{{ route('auth.getLogin') }}">Log in</a></li>
+                            <li><a href="{{ route('auth.getRegister') }}">Register</a></li>
+                        @endif
                     </ul>
                 </li>
             </ul>
