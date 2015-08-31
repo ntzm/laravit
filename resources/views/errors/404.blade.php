@@ -1,5 +1,7 @@
 @extends('template')
 
+@section('title', '404')
+
 @section('content')
     <div class="text-center">
         <h1>404</h1>

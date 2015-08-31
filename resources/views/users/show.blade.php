@@ -1,5 +1,7 @@
 @extends('template')
 
+@section('title', $user->username)
+
 @section('content')
     <div class="panel panel-info">
         <div class="panel-heading">{{ $user->username }}</div>

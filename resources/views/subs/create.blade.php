@@ -1,5 +1,7 @@
 @extends('template')
 
+@section('title', 'New sub')
+
 @section('content')
     <h2>New sub</h2>
     @include('partials.errors')

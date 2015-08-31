@@ -1,5 +1,7 @@
 @extends('template')
 
+@section('title', 'Register')
+
 @section('content')
     <h2>Register</h2>
     @include('partials.errors')
