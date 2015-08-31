@@ -15,6 +15,12 @@ Copy the example environment file
 cp .env.example .env
 ```
 
+Generate a secure application key
+
+```
+php artisan key:generate
+```
+
 Install composer dependencies
 
 ```
