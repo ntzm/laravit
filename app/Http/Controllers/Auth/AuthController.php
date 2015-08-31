@@ -24,6 +24,20 @@ class AuthController extends Controller
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
     /**
+     * Where to redirect to after logging in or registering
+     *
+     * @var string
+     */
+    protected $redirectTo = '/';
+
+    /**
+     * The column to be used as the unique username
+     *
+     * @var string
+     */
+    protected $username = 'username';
+
+    /**
      * Create a new authentication controller instance.
      *
      * @return void
@@ -42,9 +56,8 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
+            'username' => 'required|between:3,20|alpha_dash',
+            'password' => 'required|confirmed',
         ]);
     }
 
@@ -57,8 +70,7 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
+            'username' => $data['username'],
             'password' => bcrypt($data['password']),
         ]);
     }
