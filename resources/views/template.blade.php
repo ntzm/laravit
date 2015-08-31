@@ -24,6 +24,15 @@
                 <li class="{{ Helper::active('index') }}"><a href="{{ route('index') }}">Frontpage</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                @if(Auth::check())
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">New <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ route('subs.create') }}">Sub</a></li>
+                            <li><a href="#">Post</a></li>
+                        </ul>
+                    </li>
+                @endif
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User <span class="caret"></span></a>
                     <ul class="dropdown-menu">
