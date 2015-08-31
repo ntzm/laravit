@@ -8,7 +8,5 @@ Route::group(['prefix' => 'user', 'as' => 'users.'], function () {
 
 Route::group(['prefix' => 'sub', 'as' => 'subs.'], function () {
     get('{name}', ['as' => 'show', 'uses' => 'SubController@show']);
-    Route::group(['prefix' => 'post', 'as' => 'posts.'], function () {
-        get('{slug}', ['as' => 'show', 'uses' => 'PostController@show']);
-    });
+    get('{subName}/post/{slug}', ['as' => 'posts.show', 'uses' => 'PostController@show']);
 });
