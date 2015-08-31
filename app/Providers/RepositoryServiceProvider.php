@@ -32,5 +32,10 @@ class RepositoryServiceProvider extends ServiceProvider
             'App\Repositories\Sub\SubRepositoryInterface',
             'App\Repositories\Sub\EloquentSubRepository'
         );
+
+        $this->app->bind(
+            'App\Repositories\User\UserRepositoryInterface',
+            'App\Repositories\User\EloquentUserRepository'
+        );
     }
 }
