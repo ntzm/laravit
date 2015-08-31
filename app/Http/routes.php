@@ -12,3 +12,11 @@ Route::group(['prefix' => 'sub', 'as' => 'subs.'], function () {
     get('{name}', ['as' => 'show', 'uses' => 'SubController@show']);
     get('{subName}/post/{slug}', ['as' => 'posts.show', 'uses' => 'PostController@show']);
 });
+
+Route::group(['prefix' => 'auth', 'as' => 'auth.'], function () {
+    get('login', ['as' => 'getLogin', 'uses' =>'Auth\AuthController@getLogin']);
+    post('login', ['as' => 'postLogin', 'uses' => 'Auth\AuthController@postLogin']);
+    get('logout', ['as' => 'getLogout', 'uses' => 'Auth\AuthController@getLogout']);
+    get('register', ['as' => 'getRegister', 'uses' => 'Auth\AuthController@getRegister']);
+    post('register', ['as' => 'postRegister', 'uses' => 'Auth\AuthController@postRegister']);
+});
