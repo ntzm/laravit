@@ -2,6 +2,7 @@
 
 @section('content')
     <h2>Register</h2>
+    @include('partials.errors')
     <form method="post" action="{{ route('auth.postRegister') }}">
         {!! csrf_field() !!}
         <div class="form-group">

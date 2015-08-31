@@ -2,7 +2,7 @@
 
 @section('content')
     <h2>Login</h2>
-    @include('partials.errors', compact('errors'))
+    @include('partials.errors')
     <form method="post" action="{{ route('auth.postLogin') }}">
         {!! csrf_field() !!}
         <div class="form-group">

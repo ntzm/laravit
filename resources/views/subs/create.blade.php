@@ -2,6 +2,7 @@
 
 @section('content')
     <h2>New sub</h2>
+    @include('partials.errors')
     <form action="{{ route('subs.store') }}">
         {!! csrf_field() !!}
         <div class="form-group">
