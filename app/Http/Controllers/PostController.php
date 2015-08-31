@@ -2,17 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
-use App\Sub;
+use App\Repositories\Post\PostRepositoryInterface as Post;
 
 class PostController extends Controller
 {
+    private $post;
+
+    public function __construct(Post $post)
+    {
+        $this->post = $post;
+    }
+    
     public function show($subName, $slug)
     {
-        $sub = Sub::where('name', $subName)->firstOrFail();
-        $post = Post::where('slug', $slug)->where('sub_id', $sub->id)->firstOrFail();
-        $comments = $post->comments;
+        $post = $this->post->findStrict($subName, $slug);
 
-        return view('subs.posts.show', compact('post', 'comments'));
+        return view('subs.posts.show', compact('post'));
     }
 }
