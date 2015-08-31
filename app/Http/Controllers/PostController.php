@@ -6,9 +6,9 @@ use App\Post;
 
 class PostController extends Controller
 {
-    public function show($id)
+    public function show($slug)
     {
-        $post = Post::findOrFail($id);
+        $post = Post::findBySlug($slug);
         $comments = $post->comments;
 
         return view('subs.posts.show', compact('post', 'comments'));
