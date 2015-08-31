@@ -29,9 +29,9 @@
                     <ul class="dropdown-menu">
                         @if(Auth::check())
                             <li><a href="{{ route('users.show', Auth::user()->username) }}">Profile</a></li>
-                            <li><a href="{{ route('auth.logout') }}">Log out</a></li>
+                            <li><a href="{{ route('auth.logout') }}">Logout</a></li>
                         @else
-                            <li><a href="{{ route('auth.login') }}">Log in</a></li>
+                            <li><a href="{{ route('auth.login') }}">Login</a></li>
                             <li><a href="{{ route('auth.register') }}">Register</a></li>
                         @endif
                     </ul>
