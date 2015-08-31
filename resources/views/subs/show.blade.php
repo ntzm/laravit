@@ -3,5 +3,5 @@
 @section('title', $sub->name)
 
 @section('content')
-    @include('partials.posts', compact('posts'))
+    @include('partials.posts', ['posts' => $sub->posts])
 @endsection

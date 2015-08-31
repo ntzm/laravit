@@ -27,5 +27,10 @@ class RepositoryServiceProvider extends ServiceProvider
             'App\Repositories\Post\PostRepositoryInterface',
             'App\Repositories\Post\EloquentPostRepository'
         );
+
+        $this->app->bind(
+            'App\Repositories\Sub\SubRepositoryInterface',
+            'App\Repositories\Sub\EloquentSubRepository'
+        );
     }
 }

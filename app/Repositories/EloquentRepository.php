@@ -2,6 +2,8 @@
 
 namespace App\Repositories;
 
+use Illuminate\Http\Request;
+
 abstract class EloquentRepository
 {
     /**
@@ -33,5 +35,10 @@ abstract class EloquentRepository
     public function find($id)
     {
         return $this->model->where($this->field, $id)->firstOrFail();
+    }
+
+    public function store(Request $request)
+    {
+        return $this->model->create($request->all());
     }
 }

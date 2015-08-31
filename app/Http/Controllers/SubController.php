@@ -3,21 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Sub;
+use App\Repositories\Sub\SubRepositoryInterface as Sub;
 
 class SubController extends Controller
 {
-    public function __construct()
+    private $sub;
+
+    public function __construct(Sub $sub)
     {
+        $this->sub = $sub;
+
         $this->middleware('auth', ['except' => ['show']]);
     }
 
     public function show($name)
     {
-        $sub = Sub::where('name', $name)->firstOrFail();
-        $posts = $sub->posts()->simplePaginate(10);
+        $sub = $this->sub->find($name);
 
-        return view('subs.show', compact('sub', 'posts'));
+        return view('subs.show', compact('sub'));
     }
 
     public function create()
@@ -27,9 +30,7 @@ class SubController extends Controller
 
     public function store(Request $request)
     {
-        $sub = Sub::create($request->all());
-        $sub->owner()->associate(Auth::user());
-        $sub->save();
+        $sub = $this->sub->store($request);
 
         return redirect()->route('subs.show', $sub->name);
     }
