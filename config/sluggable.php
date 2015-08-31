@@ -35,7 +35,7 @@ return [
 	 * no length restrictions are enforced.  Set it to a positive integer if you
 	 * want to make sure your slugs aren't too long.
 	 */
-	'max_length' => null,
+	'max_length' => 50,
 
 	/**
 	 * If left to "null", then use the cocur/slugify package to generate the slug
