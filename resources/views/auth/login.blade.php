@@ -13,6 +13,13 @@
             <label for="password">Password</label>
             <input type="password" class="form-control" name="password" id="password">
         </div>
+        <div class="form-group">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="remember"> Remember me
+                </label>
+            </div>
+        </div>
         <button type="submit" class="btn btn-primary">Login</button>
     </form>
     <p>Don't have an account? You should <a href="{{ route('auth.register') }}">register</a>!</p>
