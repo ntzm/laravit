@@ -18,5 +18,5 @@
         </div>
         <button type="submit" class="btn btn-primary">Register</button>
     </form>
-    <p>Already have an account? You should <a href="{{ route('auth.getLogin') }}">login</a>!</p>
+    <p>Already have an account? You should <a href="{{ route('auth.login') }}">login</a>!</p>
 @endsection
