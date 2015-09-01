@@ -5,7 +5,7 @@
         </a>
     </div>
     <div class="panel-body">
-        @unless(Helper::isValidUrl($post->contents))
+        @unless(Helper::isValidUrl($post->content))
             <p>{!! Helper::markdownToHtml($post->content) !!}</p>
             <hr>
         @endunless
