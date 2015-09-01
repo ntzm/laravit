@@ -17,5 +17,6 @@
             </form>
         </div>
     </div>
+    <hr>
     @include('partials.comments', ['comments' => $post->comments])
 @endsection
