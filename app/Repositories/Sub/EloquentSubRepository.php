@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Sub;
 
+use Auth;
 use App\Repositories\EloquentRepository;
 use App\Sub;
 use Illuminate\Http\Request;
