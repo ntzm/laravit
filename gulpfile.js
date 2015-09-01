@@ -4,7 +4,8 @@ var assets = './node_modules/';
 
 elixir(function(mix) {
     mix.styles([
-        'bootstrap/dist/css/bootstrap.css'
+        'bootstrap/dist/css/bootstrap.css',
+        '../resources/assets/css/main.css'
     ], 'public/css/style.css', assets);
     mix.scripts([
         'jquery/dist/jquery.js',
