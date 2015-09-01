@@ -37,5 +37,10 @@ class RepositoryServiceProvider extends ServiceProvider
             'App\Repositories\User\UserRepositoryInterface',
             'App\Repositories\User\EloquentUserRepository'
         );
+
+        $this->app->bind(
+            'App\Repositories\Comment\CommentRepositoryInterface',
+            'App\Repositories\Comment\EloquentCommentRepository'
+        );
     }
 }

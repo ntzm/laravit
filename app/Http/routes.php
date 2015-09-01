@@ -11,6 +11,7 @@ Route::group(['prefix' => 'sub', 'as' => 'subs.'], function () {
     post('create', ['as' => 'store', 'uses' => 'SubController@store']);
     get('{name}', ['as' => 'show', 'uses' => 'SubController@show']);
     get('{subName}/post/{slug}', ['as' => 'posts.show', 'uses' => 'PostController@show']);
+    post('{subName}/post/{slug}/comment', ['as' => 'posts.comments.store', 'uses' => 'CommentController@store']);
     get('{subName}/submit', ['as' => 'posts.create', 'uses' => 'PostController@create']);
     post('{subName}/submit', ['as' => 'posts.store', 'uses' => 'PostController@store']);
 });
