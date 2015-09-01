@@ -4,5 +4,5 @@ namespace App\Repositories\User;
 
 interface UserRepositoryInterface
 {
-    public function find($name);
+    public function findByUsername($name);
 }

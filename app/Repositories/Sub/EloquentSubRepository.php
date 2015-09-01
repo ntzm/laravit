@@ -3,20 +3,12 @@
 namespace App\Repositories\Sub;
 
 use Auth;
-use App\Repositories\EloquentRepository;
 use App\Sub;
 use Illuminate\Http\Request;
 
-class EloquentSubRepository extends EloquentRepository implements SubRepositoryInterface
+class EloquentSubRepository implements SubRepositoryInterface
 {
-    protected $field = 'name';
-
-    public function __construct(Sub $sub)
-    {
-        $this->model = $sub;
-    }
-
-    public function find($name)
+    public function findByName($name)
     {
         $sub = Sub::where('name', $name)->firstOrFail();
         $sub->posts = $sub->posts()->simplePaginate(10);

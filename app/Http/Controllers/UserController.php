@@ -15,7 +15,7 @@ class UserController extends Controller
 
     public function show($username)
     {
-        $user = $this->userRepository->find($username);
+        $user = $this->userRepository->findByUsername($username);
 
         return view('users.show', compact('user'));
     }

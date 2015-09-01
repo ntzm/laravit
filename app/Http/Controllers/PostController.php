@@ -22,21 +22,21 @@ class PostController extends Controller
     
     public function show($subName, $slug)
     {
-        $post = $this->postRepository->findStrict($subName, $slug);
+        $post = $this->postRepository->findBySlugThroughSubName($subName, $slug);
 
         return view('subs.posts.show', compact('post'));
     }
 
     public function create($subName)
     {
-        $sub = $this->subRepository->find($subName);
+        $sub = $this->subRepository->findByName($subName);
 
         return view('subs.posts.create', compact('sub'));
     }
 
     public function store($subName, Request $request)
     {
-        $sub = $this->subRepository->find($subName);
+        $sub = $this->subRepository->findByName($subName);
         $post = $this->postRepository->store($request, $sub, Auth::user());
 
         return redirect()->route('subs.posts.show', [$sub->name, $post->slug]);

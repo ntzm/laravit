@@ -2,19 +2,11 @@
 
 namespace App\Repositories\User;
 
-use App\Repositories\EloquentRepository;
 use App\User;
 
-class EloquentUserRepository extends EloquentRepository implements UserRepositoryInterface
+class EloquentUserRepository implements UserRepositoryInterface
 {
-    protected $field = 'username';
-
-    public function __construct(User $user)
-    {
-        $this->model = $user;
-    }
-
-    public function find($username)
+    public function findByUsername($username)
     {
         $user = User::where('username', $username)->firstOrFail();
         $user->posts = $user->posts()->simplePaginate(10);

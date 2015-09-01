@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 
 interface PostRepositoryInterface
 {
-    public function findStrict($subName, $slug);
+    public function findBySlugThroughSubName($subName, $slug);
     public function store(Request $request, Sub $sub, User $user);
 }

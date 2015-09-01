@@ -18,7 +18,7 @@ class SubController extends Controller
 
     public function show($name)
     {
-        $sub = $this->subRepository->find($name);
+        $sub = $this->subRepository->findByName($name);
 
         return view('subs.show', compact('sub'));
     }
