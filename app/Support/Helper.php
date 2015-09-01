@@ -3,6 +3,7 @@
 namespace App\Support;
 
 use Route;
+use Markdown;
 
 class Helper
 {
@@ -17,5 +18,16 @@ class Helper
     public static function isValidUrl($url)
     {
         return (bool) filter_var($url, FILTER_VALIDATE_URL);
+    }
+
+    /**
+     * Escape Markdown and convert to HTML
+     *
+     * @param $markdown
+     * @return string
+     */
+    public static function markdownToHtml($markdown)
+    {
+        return Markdown::convertToHtml(e($markdown));
     }
 }

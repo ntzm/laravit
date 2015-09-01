@@ -56,6 +56,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\RepositoryServiceProvider::class,
         Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
+        GrahamCampbell\Markdown\MarkdownServiceProvider::class,
 
     ],
 
@@ -95,6 +96,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
         'Helper'    => App\Support\Helper::class,
+        'Markdown'  => GrahamCampbell\Markdown\Facades\Markdown::class,
 
     ],
 
