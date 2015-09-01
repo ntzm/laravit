@@ -1,7 +1,7 @@
 <div class="panel panel-default">
     <div class="panel-heading">
         <a href="{{ Helper::isValidUrl($post->content) ? $post->content : route('subs.posts.show', [$post->sub->name, $post->slug]) }}">
-            {{ $post->title }}
+            <h4>{{ $post->title }}</h4>
         </a>
     </div>
     <div class="panel-body">
