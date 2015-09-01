@@ -1,1 +1,1 @@
-@each('partials.comment', $comments, 'comment')
+@each('partials.comment', $comments, 'comment', 'partials.nothing')

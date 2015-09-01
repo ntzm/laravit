@@ -1,2 +1,2 @@
-@each('partials.post', $posts, 'post')
+@each('partials.post', $posts, 'post', 'partials.nothing')
 {!! $posts->render() !!}
