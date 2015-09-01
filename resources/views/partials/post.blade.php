@@ -5,6 +5,10 @@
         </a>
     </div>
     <div class="panel-body">
+        @unless(Helper::isValidUrl($post->contents))
+            <p>{!! Helper::markdownToHtml($post->content) !!}</p>
+            <hr>
+        @endunless
         <p>
             submitted {{ $post->created_at->diffForHumans() }}
             by <a href="{{ route('users.show', $post->user->username) }}">{{ $post->user->username }}</a>
