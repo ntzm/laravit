@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent;
 
-class CommentVote extends Model
+class CommentVote extends Eloquent
 {
     /**
      * The database table used by the model.

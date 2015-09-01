@@ -2,11 +2,11 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent;
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
 
-class Post extends Model implements SluggableInterface
+class Post extends Eloquent implements SluggableInterface
 {
     use SluggableTrait;
 

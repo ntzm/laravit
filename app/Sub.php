@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Eloquent;
 
-class Sub extends Model
+class Sub extends Eloquent
 {
     /**
      * The database table used by the model.
