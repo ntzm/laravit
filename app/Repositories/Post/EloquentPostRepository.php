@@ -18,7 +18,7 @@ class EloquentPostRepository extends EloquentRepository implements PostRepositor
     public function findStrict($subName, $slug)
     {
         $sub = Sub::where('name', $subName)->firstOrFail();
-        $post = Post::where('slug', $slug)->where('sub_id', $sub->id)->firstOrFail();
+        $post = Post::where($this->field, $slug)->where('sub_id', $sub->id)->firstOrFail();
 
         return $post;
     }
