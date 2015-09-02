@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Repositories\Sub;
+namespace App\Repositories;
 
 use Auth;
 use App\Sub;
 use Illuminate\Http\Request;
 
-class EloquentSubRepository implements SubRepositoryInterface
+class SubRepository
 {
     public function findByName($name)
     {

@@ -1,22 +1,14 @@
 <?php
 
-namespace App\Repositories\Comment;
+namespace App\Repositories;
 
 use App\Comment;
 use App\Post;
 use App\User;
 use Illuminate\Http\Request;
-use App\Repositories\Post\PostRepositoryInterface as PostRepository;
 
-class EloquentCommentRepository implements CommentRepositoryInterface
+class CommentRepository
 {
-    private $postRepository;
-
-    public function __construct(PostRepository $postRepository) {
-
-        $this->postRepository = $postRepository;
-    }
-
     public function store(Request $request, Post $post, User $user)
     {
         $comment = Comment::create($request->all());

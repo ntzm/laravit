@@ -3,22 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Repositories\Sub\SubRepositoryInterface as SubRepository;
+use App\Repositories\SubRepository;
 
 class SubController extends Controller
 {
-    private $subRepository;
+    private $sub;
 
-    public function __construct(SubRepository $subRepository)
+    public function __construct(SubRepository $sub)
     {
-        $this->subRepository = $subRepository;
+        $this->sub = $sub;
 
         $this->middleware('auth', ['except' => ['show']]);
     }
 
     public function show($name)
     {
-        $sub = $this->subRepository->findByName($name);
+        $sub = $this->sub->findByName($name);
 
         return view('subs.show', compact('sub'));
     }
@@ -30,7 +30,7 @@ class SubController extends Controller
 
     public function store(Request $request)
     {
-        $sub = $this->subRepository->store($request);
+        $sub = $this->sub->store($request);
 
         return redirect()->route('subs.show', $sub->name);
     }

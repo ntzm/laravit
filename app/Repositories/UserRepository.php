@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Repositories\User;
+namespace App\Repositories;
 
 use App\User;
 
-class EloquentUserRepository implements UserRepositoryInterface
+class UserRepository
 {
     public function findByUsername($username)
     {

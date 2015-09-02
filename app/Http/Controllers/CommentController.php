@@ -5,24 +5,24 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Http\Requests;
-use App\Repositories\Comment\CommentRepositoryInterface as CommentRepository;
-use App\Repositories\Post\PostRepositoryInterface as PostRepository;
+use App\Repositories\CommentRepository;
+use App\Repositories\PostRepository;
 
 class CommentController extends Controller
 {
-    private $commentRepository;
-    private $postRepository;
+    private $comment;
+    private $post;
 
-    public function __construct(CommentRepository $commentRepository, PostRepository $postRepository)
+    public function __construct(CommentRepository $comment, PostRepository $post)
     {
-        $this->commentRepository = $commentRepository;
-        $this->postRepository = $postRepository;
+        $this->comment = $comment;
+        $this->post = $post;
     }
 
     public function store($subName, $postSlug, Request $request)
     {
-        $post = $this->postRepository->findBySlugThroughSubName($subName, $postSlug);
-        $this->commentRepository->store($request, $post, Auth::user());
+        $post = $this->post->findBySlugThroughSubName($subName, $postSlug);
+        $this->comment->store($request, $post, Auth::user());
 
         return redirect()->back();
     }

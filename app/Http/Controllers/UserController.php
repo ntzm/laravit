@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\User\UserRepositoryInterface as UserRepository;
+use App\Repositories\UserRepository;
 
 class UserController extends Controller
 {
-    private $userRepository;
+    private $user;
 
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserRepository $user)
     {
-        $this->userRepository = $userRepository;
+        $this->user = $user;
     }
 
     public function show($username)
     {
-        $user = $this->userRepository->findByUsername($username);
+        $user = $this->user->findByUsername($username);
 
         return view('users.show', compact('user'));
     }

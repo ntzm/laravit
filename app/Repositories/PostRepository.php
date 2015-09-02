@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Repositories\Post;
+namespace App\Repositories;
 
 use App\Post;
 use App\Sub;
 use App\User;
 use Illuminate\Http\Request;
 
-class EloquentPostRepository implements PostRepositoryInterface
+class PostRepository
 {
     public function findBySlugThroughSubName($subName, $slug)
     {
