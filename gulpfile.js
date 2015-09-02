@@ -9,6 +9,8 @@ elixir(function(mix) {
     ], 'public/css/style.css', assets);
     mix.scripts([
         'jquery/dist/jquery.js',
-        'bootstrap/dist/js/bootstrap.js'
+        'bootstrap/dist/js/bootstrap.js',
+        'commonmark/dist/commonmark.min.js',
+        '../resources/assets/js/main.js'
     ], 'public/js/app.js', assets);
 });

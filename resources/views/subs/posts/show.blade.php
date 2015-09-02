@@ -16,6 +16,15 @@
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
+        <div class="col-lg-6">
+            <label>Preview</label>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <a href="{{ route('users.show', Auth::user()->username) }}">{{ Auth::user()->username }}</a>
+                    <p id="preview"></p>
+                </div>
+            </div>
+        </div>
     </div>
     <hr>
     @include('partials.comments', ['comments' => $post->comments])
