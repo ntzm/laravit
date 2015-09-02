@@ -21,6 +21,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <a href="{{ route('users.show', Auth::user()->username) }}">{{ Auth::user()->username }}</a>
+                    just now
                     <p id="content-preview"></p>
                 </div>
             </div>
