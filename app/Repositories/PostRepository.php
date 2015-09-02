@@ -7,7 +7,7 @@ use App\Sub;
 use App\User;
 use Illuminate\Http\Request;
 
-class PostRepository
+class PostRepository extends Repository
 {
     public function findBySlugThroughSubName($subName, $slug)
     {

@@ -6,12 +6,12 @@ use Auth;
 use App\Sub;
 use Illuminate\Http\Request;
 
-class SubRepository
+class SubRepository extends Repository
 {
     public function findByName($name)
     {
         $sub = Sub::where('name', $name)->firstOrFail();
-        $sub->posts = $sub->posts()->simplePaginate(10);
+        $sub->posts = $sub->posts()->simplePaginate($this->resultsPerPage);
 
         return $sub;
     }

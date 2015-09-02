@@ -7,7 +7,7 @@ use App\Post;
 use App\User;
 use Illuminate\Http\Request;
 
-class CommentRepository
+class CommentRepository extends Repository
 {
     public function store(Request $request, Post $post, User $user)
     {
