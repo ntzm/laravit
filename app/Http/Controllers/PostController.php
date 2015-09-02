@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Repositories\PostRepository;
 use App\Repositories\SubRepository;
+use App\Http\Requests\StorePostRequest;
 use Auth;
-use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -34,7 +34,7 @@ class PostController extends Controller
         return view('subs.posts.create', compact('sub'));
     }
 
-    public function store($subName, Request $request)
+    public function store($subName, StorePostRequest $request)
     {
         $sub = $this->sub->findByName($subName);
         $post = $this->post->store($request, $sub, Auth::user());

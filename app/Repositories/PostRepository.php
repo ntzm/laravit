@@ -5,7 +5,6 @@ namespace App\Repositories;
 use App\Post;
 use App\Sub;
 use App\User;
-use Illuminate\Http\Request;
 
 class PostRepository extends Repository
 {
@@ -17,7 +16,7 @@ class PostRepository extends Repository
         return $post;
     }
 
-    public function store(Request $request, Sub $sub, User $user)
+    public function store($request, Sub $sub, User $user)
     {
         $post = Post::create($request->all());
         $post->sub()->associate($sub);
