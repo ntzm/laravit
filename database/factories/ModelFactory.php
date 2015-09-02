@@ -1,8 +1,13 @@
 <?php
 
+function makeSafeUsername($string)
+{
+    return strtolower(substr(str_replace('.', '_', $string), 0, 20));
+}
+
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
-        'username' => $faker->userName,
+        'username' => makeSafeUsername($faker->userName),
         'password' => bcrypt('password'),
         'remember_token' => str_random(10),
     ];
@@ -11,13 +16,13 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 $factory->define(App\Post::class, function (Faker\Generator $faker) {
     return [
         'title' => $faker->sentence,
-        'content' => $faker->url,
+        'content' => rand(0, 1) ? $faker->url : implode("\n\n", $faker->paragraphs),
     ];
 });
 
 $factory->define(App\Sub::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->userName,
+        'name' => makeSafeUsername($faker->userName),
     ];
 });
 
