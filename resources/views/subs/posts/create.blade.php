@@ -10,13 +10,33 @@
             {!! csrf_field() !!}
             <div class="form-group">
                 <label for="name">Title</label>
-                <input type="text" class="form-control" maxlength="100" name="title" id="title" value="{{ old('title') }}">
+                <input type="text" class="form-control" maxlength="100" name="title" id="title" data-preview="#title-preview" value="{{ old('title') }}">
             </div>
             <div class="form-group">
                 <label for="content">Content</label>
-                <textarea class="form-control" name="content" id="content">{{ old('content') }}</textarea>
+                <textarea rows="10" class="form-control" name="content" id="content" data-preview="#content-preview" data-markdown>{{ old('content') }}</textarea>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+        <h2>Preview</h2>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <a href="#">
+                    <h4 id="title-preview"></h4>
+                </a>
+            </div>
+            <div class="panel-body">
+                <p id="content-preview"></p>
+                <hr>
+                <p>
+                    submitted just now
+                    by <a href="{{ route('users.show', Auth::user()->username) }}">{{ Auth::user()->username }}</a>
+                    to <a href="{{ route('subs.show', $sub->name) }}">/sub/{{ $sub->name }}</a>
+                </p>
+                <a href="#">
+                    0 comments
+                </a>
+            </div>
+        </div>
     </div>
 @endsection

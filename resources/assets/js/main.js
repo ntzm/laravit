@@ -13,8 +13,13 @@ function escapeHtml(html) {
     return $('<div/>').text(html).html();
 }
 
-$('#content').on('change keyup paste', function() {
-    var escapedComment = escapeHtml($(this).val());
-    var result = writer.render(reader.parse(escapedComment));
-    $('#preview').html(result);
+$('[data-preview]').on('change keyup paste', function() {
+    var target = $($(this).data('preview'));
+    var escaped = escapeHtml($(this).val());
+    if ($(this).data('markdown') !== undefined) {
+        var result = writer.render(reader.parse(escaped));
+    } else {
+        var result = escaped;
+    }
+    $(target).html(result);
 });

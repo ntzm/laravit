@@ -11,7 +11,7 @@
                 {!! csrf_field() !!}
                 <div class="form-group">
                     <label for="content">New comment</label>
-                    <textarea rows="10" class="form-control" name="content" id="content">{{ old('content') }}</textarea>
+                    <textarea rows="10" class="form-control" name="content" id="content" data-preview="#content-preview" data-markdown>{{ old('content') }}</textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
@@ -21,7 +21,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <a href="{{ route('users.show', Auth::user()->username) }}">{{ Auth::user()->username }}</a>
-                    <p id="preview"></p>
+                    <p id="content-preview"></p>
                 </div>
             </div>
         </div>
