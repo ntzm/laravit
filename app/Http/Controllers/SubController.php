@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreSubRequest;
 use App\Repositories\SubRepository;
 
 class SubController extends Controller
@@ -28,7 +28,7 @@ class SubController extends Controller
         return view('subs.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreSubRequest $request)
     {
         $sub = $this->sub->store($request);
 

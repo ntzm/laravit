@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use Auth;
 use App\Sub;
-use Illuminate\Http\Request;
 
 class SubRepository extends Repository
 {
@@ -16,7 +15,7 @@ class SubRepository extends Repository
         return $sub;
     }
 
-    public function store(Request $request)
+    public function store($request)
     {
         $sub = Sub::create($request->all());
         $sub->owner()->associate(Auth::user());
