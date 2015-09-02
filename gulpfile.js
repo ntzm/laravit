@@ -13,4 +13,5 @@ elixir(function(mix) {
         'commonmark/dist/commonmark.min.js',
         '../resources/assets/js/main.js'
     ], 'public/js/app.js', assets);
+    mix.copy(assets + 'bootstrap/fonts', 'public/fonts');
 });
