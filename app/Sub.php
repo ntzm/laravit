@@ -18,7 +18,9 @@ class Sub extends Eloquent
      *
      * @var array
      */
-    protected $fillable = ['name'];
+    protected $fillable = [
+        'name',
+    ];
 
     public function owner()
     {

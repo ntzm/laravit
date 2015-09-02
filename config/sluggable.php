@@ -2,22 +2,22 @@
 
 return [
 
-	'build_from' => null,
+    'build_from' => null,
 
-	'save_to' => 'slug',
+    'save_to' => 'slug',
 
-	'max_length' => 50,
+    'max_length' => 50,
 
-	'method' => null,
+    'method' => null,
 
-	'separator' => '-',
+    'separator' => '-',
 
-	'unique' => true,
+    'unique' => true,
 
-	'include_trashed' => false,
+    'include_trashed' => false,
 
-	'on_update' => false,
+    'on_update' => false,
 
-	'reserved' => ['new'],
+    'reserved' => ['new'],
 
 ];

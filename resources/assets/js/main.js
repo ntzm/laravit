@@ -13,7 +13,7 @@ function escapeHtml(html) {
     return $('<div/>').text(html).html();
 }
 
-$('[data-preview]').on('change keyup paste', function() {
+$('[data-preview]').on('change keyup paste', function () {
     var target = $($(this).data('preview'));
     var escaped = escapeHtml($(this).val());
     if ($(this).data('markdown') !== undefined) {

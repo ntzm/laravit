@@ -10,9 +10,7 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
-class User extends Eloquent implements AuthenticatableContract,
-                                       AuthorizableContract,
-                                       CanResetPasswordContract
+class User extends Eloquent implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
 {
     use Authenticatable, Authorizable, CanResetPassword;
 
@@ -28,14 +26,20 @@ class User extends Eloquent implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['username', 'password'];
+    protected $fillable = [
+        'username',
+        'password',
+    ];
 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = ['password', 'remember_token'];
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 
     public function posts()
     {

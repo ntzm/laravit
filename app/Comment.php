@@ -18,7 +18,9 @@ class Comment extends Eloquent
      *
      * @var array
      */
-    protected $fillable = ['content'];
+    protected $fillable = [
+        'content',
+    ];
 
     public function user()
     {

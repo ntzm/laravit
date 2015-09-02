@@ -17,7 +17,7 @@ Route::group(['prefix' => 'sub', 'as' => 'subs.'], function () {
 });
 
 Route::group(['prefix' => 'auth', 'as' => 'auth.'], function () {
-    get('login', ['as' => 'login', 'uses' =>'Auth\AuthController@getLogin']);
+    get('login', ['as' => 'login', 'uses' => 'Auth\AuthController@getLogin']);
     post('login', ['as' => 'postLogin', 'uses' => 'Auth\AuthController@postLogin']);
     get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
     get('register', ['as' => 'register', 'uses' => 'Auth\AuthController@getRegister']);

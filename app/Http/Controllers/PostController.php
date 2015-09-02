@@ -19,7 +19,7 @@ class PostController extends Controller
 
         $this->middleware('auth', ['except' => ['show']]);
     }
-    
+
     public function show($subName, $slug)
     {
         $post = $this->post->findBySlugThroughSubName($subName, $slug);

@@ -17,7 +17,7 @@ class Helper
 
     public static function isValidUrl($url)
     {
-        return (bool) filter_var($url, FILTER_VALIDATE_URL);
+        return (bool)filter_var($url, FILTER_VALIDATE_URL);
     }
 
     /**

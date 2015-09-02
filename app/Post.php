@@ -16,7 +16,7 @@ class Post extends Eloquent implements SluggableInterface
      * @var array
      */
     protected $sluggable = [
-        'build_from' => 'title'
+        'build_from' => 'title',
     ];
 
     /**
@@ -31,7 +31,10 @@ class Post extends Eloquent implements SluggableInterface
      *
      * @var array
      */
-    protected $fillable = ['title', 'content'];
+    protected $fillable = [
+        'title',
+        'content',
+    ];
 
     public function user()
     {
