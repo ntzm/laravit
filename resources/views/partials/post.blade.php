@@ -17,13 +17,15 @@
         <a href="{{ route('subs.posts.show', [$post->sub->name, $post->slug]) }}">
             {{ $post->comments()->count() }} comment{{ $post->comments()->count() ? '' : 's' }}
         </a>
-        <hr>
-        <button type="button" class="btn btn-default" data-vote="1">
-            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-        </button>
-        SCORE
-        <button type="button" class="btn btn-default" data-vote="-1">
-            <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
-        </button>
+        @if(Auth::check())
+            <hr>
+            <button type="button" class="btn btn-default" data-vote="1">
+                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+            </button>
+            SCORE
+            <button type="button" class="btn btn-default" data-vote="-1">
+                <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+            </button>
+        @endif
     </div>
 </div>
