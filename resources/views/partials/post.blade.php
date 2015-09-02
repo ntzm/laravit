@@ -1,4 +1,4 @@
-<div class="panel panel-default" data-slug="{{ $post->slug }}">
+<div class="panel panel-default" data-sub="{{ $post->sub->name }}" data-slug="{{ $post->slug }}">
     <div class="panel-heading">
         <a href="{{ Helper::isValidUrl($post->content) ? $post->content : route('subs.posts.show', [$post->sub->name, $post->slug]) }}">
             <h4>{{ $post->title }}</h4>

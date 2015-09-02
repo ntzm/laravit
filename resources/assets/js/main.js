@@ -3,6 +3,12 @@ var writer = new commonmark.HtmlRenderer({
     safe: true // Prevent previewing javascript:<code> XSS attacks
 });
 
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
 var settings = {
     voteClassDefault: 'btn-default',
     voteClassPressed: 'btn-info',
@@ -10,8 +16,11 @@ var settings = {
 };
 
 var api = {
-    votePost: function (slug, type) {
-        $.get('/api/posts/' + slug + '/vote/' + type);
+    votePost: function (sub, slug, type) {
+        $.ajax({
+            method: 'put',
+            url: '/sub/' + sub + '/post/' + slug + '/vote/' + type
+        });
     }
 };
 
@@ -41,6 +50,8 @@ $('[data-vote]').on('click', function () {
     var $clicked = $(this);
     // Post container
     var $post = $clicked.closest('[data-slug]');
+    // Post sub
+    var sub = $post.data('sub');
     // Post slug identifier
     var slug = $post.data('slug');
     // Vote type (1/-1)
@@ -61,5 +72,5 @@ $('[data-vote]').on('click', function () {
         $clicked.toggleClass(settings.voteClassToggle);
     }
 
-    api.votePost(slug, type);
+    api.votePost(sub, slug, type);
 })
