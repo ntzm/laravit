@@ -4,6 +4,7 @@ namespace App;
 
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
+use Illuminate\Support\Facades\DB;
 
 class Post extends Model implements SluggableInterface
 {
@@ -34,6 +35,22 @@ class Post extends Model implements SluggableInterface
         'title',
         'content',
     ];
+
+    public function scopeHot($query)
+    {
+        // Source: http://thisinterestsme.com/creating-whats-hot-algorithm-php-mysql
+        // TODO: Clean up this mess
+        return $query->leftJoin('votes', function ($join) {
+            $join->on('posts.id', '=', 'votes.voteable_id')
+                ->where('voteable_type', '=', 'App\Post');
+        })
+            ->select('posts.*', 'votes.value')
+            ->groupBy('posts.id')
+            ->orderBy(DB::raw(
+                'log10(abs(sum(votes.value)) + 1 ) * sign(sum(votes.value))'.
+                '+ (unix_timestamp(posts.created_at) / 300000)'
+            ), 'desc');
+    }
 
     public function user()
     {
