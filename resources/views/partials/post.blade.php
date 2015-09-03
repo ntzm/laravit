@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel panel-default" data-sub="{{ $post->sub->name }}" data-slug="{{ $post->slug }}">
     <div class="panel-heading">
         <a href="{{ Helper::isValidUrl($post->content) ? $post->content : route('subs.posts.show', [$post->sub->name, $post->slug]) }}">
             <h4>{{ $post->title }}</h4>
@@ -17,5 +17,15 @@
         <a href="{{ route('subs.posts.show', [$post->sub->name, $post->slug]) }}">
             {{ $post->comments()->count() }} comment{{ $post->comments()->count() ? '' : 's' }}
         </a>
+        @if(Auth::check())
+            <hr>
+            <button type="button" class="btn {{ $voteValue == 1 ? 'btn-info' : 'btn-default' }}" data-vote="1">
+                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+            </button>
+            {{ $score }}
+            <button type="button" class="btn {{ $voteValue == -1 ? 'btn-info' : 'btn-default' }}" data-vote="-1">
+                <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+            </button>
+        @endif
     </div>
 </div>

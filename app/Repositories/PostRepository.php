@@ -2,7 +2,9 @@
 
 namespace App\Repositories;
 
+use Auth;
 use App\Post;
+use App\Vote;
 use App\Sub;
 use App\User;
 
@@ -24,5 +26,22 @@ class PostRepository extends Repository
         $post->save();
 
         return $post;
+    }
+
+    public function vote($subName, $slug, $type)
+    {
+        $post = $this->findBySlugThroughSubName($subName, $slug);
+
+        $type = (int)$type;
+        $type = $type > 0 ? 1 : $type;
+        $type = $type < 0 ? -1 : $type;
+
+        $vote = Vote::firstOrCreate([
+            'voteable_id' => $post->id,
+            'voteable_type' => 'App\Post',
+            'user_id' => Auth::user()->id,
+        ]);
+        $vote->value = $type;
+        $vote->save();
     }
 }

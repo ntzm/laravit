@@ -48,7 +48,7 @@ class Post extends Eloquent implements SluggableInterface
 
     public function votes()
     {
-        return $this->hasMany('App\PostVote');
+        return $this->morphMany('App\Vote', 'voteable');
     }
 
     public function comments()

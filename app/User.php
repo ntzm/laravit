@@ -51,14 +51,9 @@ class User extends Eloquent implements AuthenticatableContract, AuthorizableCont
         return $this->hasMany('App\Sub', 'owner_id');
     }
 
-    public function postVotes()
+    public function votes()
     {
-        return $this->hasMany('App\PostVote');
-    }
-
-    public function commentVotes()
-    {
-        return $this->hasMany('App\CommentVote');
+        return $this->hasMany('App\Vote');
     }
 
     public function comments()

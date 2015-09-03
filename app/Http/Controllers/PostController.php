@@ -41,4 +41,9 @@ class PostController extends Controller
 
         return redirect()->route('subs.posts.show', [$sub->name, $post->slug]);
     }
+
+    public function vote($subName, $slug, $type)
+    {
+        $this->post->vote($subName, $slug, $type);
+    }
 }
