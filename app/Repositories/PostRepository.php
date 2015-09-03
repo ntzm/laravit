@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use Auth;
 use App\Post;
-use App\PostVote;
+use App\Vote;
 use App\Sub;
 use App\User;
 
@@ -36,8 +36,9 @@ class PostRepository extends Repository
         $type = $type > 0 ? 1 : $type;
         $type = $type < 0 ? -1 : $type;
 
-        $vote = PostVote::firstOrCreate([
-            'post_id' => $post->id,
+        $vote = Vote::firstOrCreate([
+            'voteable_id' => $post->id,
+            'voteable_type' => 'post',
             'user_id' => Auth::user()->id,
         ]);
         $vote->value = $type;

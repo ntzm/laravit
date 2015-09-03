@@ -34,7 +34,7 @@ class Comment extends Eloquent
 
     public function votes()
     {
-        return $this->hasMany('App\CommentVote');
+        return $this->morphMany('App\Vote', 'voteable');
     }
 
     public function parent()
