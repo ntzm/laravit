@@ -19,7 +19,7 @@ class PostRepository extends Repository
 
     public function all()
     {
-        return $this->post->simplePaginate($this->resultsPerPage);
+        return $this->post->hot()->simplePaginate($this->resultsPerPage);
     }
 
     public function findBySlugThroughSub(Sub $sub, $slug)
