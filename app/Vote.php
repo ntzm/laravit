@@ -11,17 +11,6 @@ class Vote extends Model
      */
     protected $table = 'votes';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'voteable_id',
-        'voteable_type',
-        'user_id',
-    ];
-
     public function voteable()
     {
         return $this->morphTo();

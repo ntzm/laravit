@@ -2,46 +2,59 @@
 
 namespace App\Repositories;
 
-use Auth;
 use App\Post;
 use App\Vote;
 use App\Sub;
 use App\User;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class PostRepository extends Repository
 {
-    public function findBySlugThroughSubName($subName, $slug)
+    private $post;
+
+    public function __construct(Post $post)
     {
-        $sub = Sub::where('name', $subName)->firstOrFail();
-        $post = Post::where('slug', $slug)->where('sub_id', $sub->id)->firstOrFail();
+        $this->post = $post;
+    }
+
+    public function all()
+    {
+        return $this->post->simplePaginate($this->resultsPerPage);
+    }
+
+    public function findBySlugThroughSub(Sub $sub, $slug)
+    {
+        $post = $this->post->where('slug', $slug)->where('sub_id', $sub->id)->firstOrFail();
 
         return $post;
     }
 
-    public function store($request, Sub $sub, User $user)
+    public function store(Sub $sub, User $user, array $values)
     {
-        $post = Post::create($request->all());
-        $post->sub()->associate($sub);
-        $post->user()->associate($user);
-        $post->save();
+        $post = $this->post->create($values);
+
+        $sub->posts()->save($post);
+        $user->posts()->save($post);
 
         return $post;
     }
 
-    public function vote($subName, $slug, $type)
+    public function vote(Post $post, User $user, $value)
     {
-        $post = $this->findBySlugThroughSubName($subName, $slug);
+        if (!in_array($value, [-1, 0, 1])) {
+            abort(400); // TODO: Throw an exception here
+        }
 
-        $type = (int)$type;
-        $type = $type > 0 ? 1 : $type;
-        $type = $type < 0 ? -1 : $type;
+        try {
+            $vote = $post->votes()->where('user_id', $user->id)->firstOrFail();
+        } catch (ModelNotFoundException $e) {
+            $vote = new Vote;
+        }
 
-        $vote = Vote::firstOrCreate([
-            'voteable_id' => $post->id,
-            'voteable_type' => 'App\Post',
-            'user_id' => Auth::user()->id,
-        ]);
-        $vote->value = $type;
+        $vote->value = $value;
         $vote->save();
+
+        $user->votes()->save($vote);
+        $post->votes()->save($vote);
     }
 }

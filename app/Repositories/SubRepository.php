@@ -2,24 +2,29 @@
 
 namespace App\Repositories;
 
-use Auth;
+use App\User;
 use App\Sub;
 
 class SubRepository extends Repository
 {
+    private $sub;
+
+    public function __construct(Sub $sub) {
+        $this->sub = $sub;
+    }
+
     public function findByName($name)
     {
-        $sub = Sub::where('name', $name)->firstOrFail();
+        $sub = $this->sub->where('name', $name)->firstOrFail();
         $sub->posts = $sub->posts()->simplePaginate($this->resultsPerPage);
 
         return $sub;
     }
 
-    public function store($request)
+    public function store(User $user, array $values)
     {
-        $sub = Sub::create($request->all());
-        $sub->owner()->associate(Auth::user());
-        $sub->save();
+        $sub = $this->sub->create($values);
+        $user->subs()->save($sub);
 
         return $sub;
     }

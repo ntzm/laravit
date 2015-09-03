@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Post;
+use App\Repositories\PostRepository;
 
 class HomeController extends Controller
 {
+    private $post;
+
+    public function __construct(PostRepository $post) {
+        $this->post = $post;
+    }
+
     public function index()
     {
-        $posts = Post::simplePaginate(10);
+        $posts = $this->post->all();
 
         return view('index', compact('posts'));
     }
