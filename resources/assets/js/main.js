@@ -63,7 +63,7 @@ $('[data-vote]').on('click', function () {
         // User is changing their vote from one type to another
         $opposite.toggleClass(settings.voteClassToggle);
         $clicked.toggleClass(settings.voteClassToggle);
-    } else if ($clicked.hasClass(settings.voteClassDefault)) {
+    } else if ($clicked.hasClass(settings.voteClassPressed)) {
         // User is removing their vote
         $clicked.toggleClass(settings.voteClassToggle);
         type = 0;
