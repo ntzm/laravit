@@ -2,9 +2,7 @@
 
 namespace App;
 
-use Eloquent;
-
-class Vote extends Eloquent
+class Vote extends Model
 {
     /**
      * The database table used by the model.

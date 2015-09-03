@@ -2,9 +2,7 @@
 
 namespace App;
 
-use Eloquent;
-
-class Comment extends Eloquent
+class Comment extends Model
 {
     /**
      * The database table used by the model.

@@ -2,9 +2,7 @@
 
 namespace App;
 
-use Eloquent;
-
-class Sub extends Eloquent
+class Sub extends Model
 {
     /**
      * The database table used by the model.
