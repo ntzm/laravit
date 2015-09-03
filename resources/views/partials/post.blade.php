@@ -22,7 +22,7 @@
             <button type="button" class="btn {{ $voteValue == 1 ? 'btn-info' : 'btn-default' }}" data-vote="1">
                 <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
             </button>
-            SCORE
+            {{ $score }}
             <button type="button" class="btn {{ $voteValue == -1 ? 'btn-info' : 'btn-default' }}" data-vote="-1">
                 <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
             </button>

@@ -10,10 +10,10 @@ class PostComposer
     public function compose(View $view)
     {
         $voteValue = 0;
+        $post = $view->getData()['post'];
 
         if (Auth::check())
         {
-            $post = $view->getData()['post'];
             $votes = $post->votes()->where('user_id', Auth::id());
 
             if ($votes->count() > 0) {
@@ -22,5 +22,6 @@ class PostComposer
         }
 
         $view->with('voteValue', $voteValue);
+        $view->with('score', $post->votes()->sum('value'));
     }
 }
