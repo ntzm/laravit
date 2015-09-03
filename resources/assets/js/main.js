@@ -16,10 +16,10 @@ var settings = {
 };
 
 var api = {
-    votePost: function (sub, slug, type) {
+    voteOnPost: function (sub, slug, value) {
         $.ajax({
             method: 'put',
-            url: '/sub/' + sub + '/post/' + slug + '/vote/' + type
+            url: '/sub/' + sub + '/post/' + slug + '/vote/' + value
         });
     }
 };
@@ -55,22 +55,22 @@ $('[data-vote]').on('click', function () {
     // Post slug identifier
     var slug = $post.data('slug');
     // Vote type (1/-1)
-    var type = Number($clicked.data('vote'));
+    var value = Number($clicked.data('vote'));
     // Opposite button
-    var $opposite = $post.find('[data-vote=' + -type + ']');
+    var $opposite = $post.find('[data-vote=' + -value + ']');
 
     if ($opposite.hasClass(settings.voteClassPressed)) {
-        // User is changing their vote from one type to another
+        // User is changing their vote from one value to another
         $opposite.toggleClass(settings.voteClassToggle);
         $clicked.toggleClass(settings.voteClassToggle);
     } else if ($clicked.hasClass(settings.voteClassPressed)) {
         // User is removing their vote
         $clicked.toggleClass(settings.voteClassToggle);
-        type = 0;
+        value = 0;
     } else {
         // User is voting
         $clicked.toggleClass(settings.voteClassToggle);
     }
 
-    api.votePost(sub, slug, type);
+    api.voteOnPost(sub, slug, value);
 })
