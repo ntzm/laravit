@@ -14,9 +14,9 @@
             by <a href="{{ route('users.show', $post->user->username) }}">{{ $post->user->username }}</a>
             to <a href="{{ route('subs.show', $post->sub->name) }}">/sub/{{ $post->sub->name }}</a>
         </p>
-        {{ $score }} point{{ $score ? '' : 's' }}
+        @choice('general.count.points', $score)
         <a href="{{ route('subs.posts.show', [$post->sub->name, $post->slug]) }}">
-            {{ $post->comments()->count() }} comment{{ $post->comments()->count() ? '' : 's' }}
+            @choice('general.count.comments', $post->comments()->count())
         </a>
         @if(Auth::check())
             <hr>
