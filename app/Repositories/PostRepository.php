@@ -38,7 +38,7 @@ class PostRepository extends Repository
 
         $vote = Vote::firstOrCreate([
             'voteable_id' => $post->id,
-            'voteable_type' => 'post',
+            'voteable_type' => 'App\Post',
             'user_id' => Auth::user()->id,
         ]);
         $vote->value = $type;
