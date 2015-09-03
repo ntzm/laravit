@@ -1,12 +1,12 @@
-# Reddit Laravel
+# Laravit
 
 ## Installation
 
 Clone the repository
 
 ```
-git clone https://github.com/natzim/reddit-laravel
-cd reddit-laravel/
+git clone https://github.com/natzim/laravit
+cd laravit/
 ```
 
 Copy the example environment file
