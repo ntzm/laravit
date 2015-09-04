@@ -15,5 +15,8 @@
                 </button>
             </div>
         @endif
+        @if($comment->children()->exists())
+            @include('partials.comments', ['comments' => $comment->children])
+        @endif
     </div>
 </div>

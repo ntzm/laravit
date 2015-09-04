@@ -30,5 +30,5 @@
         </div>
         <hr>
     @endif
-    @include('partials.comments', ['comments' => $post->comments])
+    @include('partials.comments', ['comments' => $post->comments()->noParent()->get()])
 @endsection

@@ -20,6 +20,11 @@ class Comment extends Model
         'content',
     ];
 
+    public function scopeNoParent($query)
+    {
+        return $query->where('parent_id', '0');
+    }
+
     public function user()
     {
         return $this->belongsTo('App\User');
@@ -38,5 +43,10 @@ class Comment extends Model
     public function parent()
     {
         return $this->belongsTo('App\Comment', 'parent_id');
+    }
+
+    public function children()
+    {
+        return $this->hasMany('App\Comment', 'parent_id');
     }
 }
