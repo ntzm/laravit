@@ -3,8 +3,8 @@
 return [
 
     'count' => [
-        'points' => '1 point|:count points',
-        'comments' => '1 comment|:count comments',
+        'points' => ':count point|:count points',
+        'comments' => ':count comment|:count comments',
     ],
 
 ];
