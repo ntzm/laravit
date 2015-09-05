@@ -19,23 +19,34 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
         <h2>Preview</h2>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <a href="#">
-                    <h4 id="title-preview"></h4>
-                </a>
-            </div>
-            <div class="panel-body">
-                <p id="content-preview"></p>
-                <hr>
-                <p>
-                    submitted just now
-                    by <a href="{{ route('users.show', Auth::user()->username) }}">{{ Auth::user()->username }}</a>
-                    to <a href="{{ route('subs.show', $sub->name) }}">/sub/{{ $sub->name }}</a>
-                </p>
-                <a href="#">
-                    0 comments
-                </a>
+        <div class="card card-block">
+            <h4 class="card-title">
+                <a href="#" id="title-preview"></a>
+            </h4>
+            <h6 class="card-subtitle">
+                1 point <span class="text-muted">just now</span>
+            </h6>
+            <div class="card-text" id="content-preview"></div>
+            <a class="card-link" href="#">
+                <i class="fa fa-comments"></i>
+                0 comments
+            </a>
+            <a class="card-link" href="{{ route('subs.show', $sub->name) }}">
+                <i class="fa fa-tag"></i>
+                {{ $sub->name }}
+            </a>
+            <a class="card-link" href="{{ route('users.show', Auth::user()->username) }}">
+                <i class="fa fa-user"></i>
+                {{ Auth::user()->username }}
+            </a>
+            <hr>
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-primary-outline">
+                    <i class="fa fa-thumbs-up"></i>
+                </button>
+                <button type="button" class="btn btn-secondary-outline">
+                    <i class="fa fa-thumbs-down"></i>
+                </button>
             </div>
         </div>
     </div>
