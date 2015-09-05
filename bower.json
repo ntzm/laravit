@@ -1,0 +1,8 @@
+{
+  "name": "laravit",
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "commonmark": "~0.22.0",
+    "jquery": "~2.1.4"
+  }
+}
