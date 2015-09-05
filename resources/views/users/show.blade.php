@@ -3,11 +3,9 @@
 @section('title', $user->username)
 
 @section('content')
-    <div class="panel panel-info">
-        <div class="panel-heading">
-            <h4>{{ $user->username }}</h4>
-        </div>
-        <div class="panel-body">
+    <div class="card card-block card-primary card-inverse">
+        <h4 class="card-title">{{ $user->username }}</h4>
+        <div class="card-text">
             Joined {{ $user->created_at->diffForHumans() }}
         </div>
     </div>
