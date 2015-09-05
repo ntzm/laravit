@@ -8,10 +8,10 @@
         @include('partials.errors')
         <form method="post" action="{{ route('subs.store') }}">
             {!! csrf_field() !!}
-            <div class="form-group">
+            <fieldset class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" maxlength="20" name="name" id="name" value="{{ old('name') }}">
-            </div>
+                <input type="text" class="form-control" maxlength="20" placeholder="Name" name="name" id="name" value="{{ old('name') }}">
+            </fieldset>
             <button type="submit" class="btn btn-primary">Create</button>
         </form>
     </div>
