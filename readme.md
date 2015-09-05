@@ -33,7 +33,13 @@ Install node dependencies
 npm install
 ```
 
-Combine assets into public folder
+Combine assets into public folder using gulp
+
+```
+node_modules/.bin/gulp
+```
+
+or if you have `gulp` already installed
 
 ```
 gulp
