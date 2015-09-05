@@ -14,18 +14,25 @@
         </div>
     @endunless
     <a class="card-link" href="{{ route('subs.posts.show', [$post->sub->name, $post->slug]) }}">
+        <i class="fa fa-comments"></i>
         @choice('general.count.comments', $post->comments()->count())
     </a>
-    <a class="card-link" href="{{ route('subs.show', $post->sub->name) }}">/sub/{{ $post->sub->name }}</a>
-    <a class="card-link" href="{{ route('users.show', $post->user->username) }}">/user/{{ $post->user->username }}</a>
+    <a class="card-link" href="{{ route('subs.show', $post->sub->name) }}">
+        <i class="fa fa-tag"></i>
+        {{ $post->sub->name }}
+    </a>
+    <a class="card-link" href="{{ route('users.show', $post->user->username) }}">
+        <i class="fa fa-user"></i>
+        {{ $post->user->username }}
+    </a>
     @if(Auth::check())
         <hr>
         <div class="btn-group" role="group">
             <button type="button" class="btn btn-{{ $voteValue == 1 ? 'primary' : 'secondary' }}-outline" data-vote="1">
-                Up
+                <i class="fa fa-thumbs-up"></i>
             </button>
             <button type="button" class="btn btn-{{ $voteValue == -1 ? 'primary' : 'secondary' }}-outline" data-vote="-1">
-                Down
+                <i class="fa fa-thumbs-down"></i>
             </button>
         </div>
     @endif
