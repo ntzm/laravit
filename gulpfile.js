@@ -7,6 +7,7 @@ elixir(function(mix) {
         .styles(
             [
                 'bower/bootstrap/dist/css/bootstrap.css',
+                'bower/font-awesome/css/font-awesome.css',
                 'css/main.css'
             ],
             'public/css/style.css',
@@ -23,7 +24,7 @@ elixir(function(mix) {
             assetsDir
         )
         .copy(
-            assetsDir + 'bower/bootstrap/fonts',
+            assetsDir + 'bower/font-awesome/fonts',
             'public/fonts'
         );
 });
