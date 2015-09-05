@@ -36,6 +36,9 @@ class PostRepository extends Repository
         $sub->posts()->save($post);
         $user->posts()->save($post);
 
+        // Upvote your own posts automatically
+        $this->vote($post, $user, 1);
+
         return $post;
     }
 
