@@ -8,14 +8,14 @@
         @include('partials.errors')
         <form method="post" action="{{ route('subs.posts.store', $sub->name) }}">
             {!! csrf_field() !!}
-            <div class="form-group">
+            <fieldset class="form-group">
                 <label for="name">Title</label>
-                <input type="text" class="form-control" maxlength="100" name="title" id="title" data-preview="#title-preview" value="{{ old('title') }}">
-            </div>
-            <div class="form-group">
+                <input type="text" class="form-control" maxlength="100" placeholder="Title" name="title" id="title" data-preview="#title-preview" value="{{ old('title') }}">
+            </fieldset>
+            <fieldset class="form-group">
                 <label for="content">Content</label>
-                <textarea rows="10" class="form-control" name="content" id="content" data-preview="#content-preview" data-markdown>{{ old('content') }}</textarea>
-            </div>
+                <textarea rows="10" class="form-control" placeholder="Content" name="content" id="content" data-preview="#content-preview" data-markdown>{{ old('content') }}</textarea>
+            </fieldset>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
         <h2>Preview</h2>
