@@ -19,12 +19,25 @@
             </div>
             <div class="col-lg-6">
                 <label>Preview</label>
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <a href="{{ route('users.show', Auth::user()->username) }}">{{ Auth::user()->username }}</a>
-                        just now
-                        <p id="content-preview"></p>
+                <div class="card card-block">
+                    <p class="card-subtitle">
+                        1 point <span class="text-muted">just now</span>
+                    </p>
+                    <div class="card-text" id="content-preview"></div>
+                    <a class="card-link" href="{{ route('users.show', Auth::user()->username) }}">
+                        <i class="fa fa-user"></i>
+                        {{ Auth::user()->username }}
+                    </a>
+                    <hr>
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-primary-outline">
+                            <i class="fa fa-thumbs-up"></i>
+                        </button>
+                        <button type="button" class="btn btn-secondary-outline">
+                            <i class="fa fa-thumbs-down"></i>
+                        </button>
                     </div>
+                    <button class="btn btn-primary">Reply</button>
                 </div>
             </div>
         </div>
