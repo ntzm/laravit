@@ -7,6 +7,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Bus\SelfHandling;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Image;
 
 class GenerateThumbnail extends Job implements SelfHandling, ShouldQueue
 {
@@ -24,13 +25,13 @@ class GenerateThumbnail extends Job implements SelfHandling, ShouldQueue
     public function handle()
     {
         try {
-            $thumbnailUrl = 'public/img/thumbs/' . $this->post->id . '.jpg';
+            $thumbnailUrl = 'img/thumbs/' . $this->post->id . '.jpg';
 
             $thumbnail = Image::make($this->imageUrl);
             $thumbnail->resize(140, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
-            $thumbnail->save($thumbnailUrl);
+            $thumbnail->save(public_path($thumbnailUrl));
         } catch (NotReadableException $e) {
             $thumbnailUrl = null;
         }
