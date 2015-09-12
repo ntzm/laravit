@@ -2,8 +2,8 @@
 
 namespace App\Support;
 
-use Route;
 use Markdown;
+use Route;
 
 class Helper
 {

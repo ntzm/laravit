@@ -2,8 +2,8 @@
 
 namespace App\Repositories;
 
-use App\User;
 use App\Sub;
+use App\User;
 
 class SubRepository extends Repository
 {

@@ -2,8 +2,8 @@
 
 namespace App\Http\Composers;
 
-use Illuminate\Contracts\View\View;
 use Auth;
+use Illuminate\Contracts\View\View;
 
 class PostComposer
 {

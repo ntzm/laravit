@@ -3,9 +3,9 @@
 namespace App\Repositories;
 
 use App\Post;
-use App\Vote;
 use App\Sub;
 use App\User;
+use App\Vote;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class PostRepository extends Repository

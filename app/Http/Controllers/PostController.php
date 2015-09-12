@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePostRequest;
 use App\Repositories\PostRepository;
 use App\Repositories\SubRepository;
-use App\Http\Requests\StorePostRequest;
 use Illuminate\Contracts\Auth\Guard as Auth;
 
 class PostController extends Controller

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\SubRepository;
-use Illuminate\Http\Request;
-use Illuminate\Contracts\Auth\Guard as Auth;
 use App\Http\Requests;
 use App\Repositories\CommentRepository;
 use App\Repositories\PostRepository;
+use App\Repositories\SubRepository;
+use Illuminate\Contracts\Auth\Guard as Auth;
+use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {

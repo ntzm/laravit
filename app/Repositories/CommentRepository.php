@@ -5,7 +5,6 @@ namespace App\Repositories;
 use App\Comment;
 use App\Post;
 use App\User;
-use Illuminate\Http\Request;
 
 class CommentRepository extends Repository
 {
