@@ -10,9 +10,9 @@ $.ajaxSetup({
 });
 
 var settings = {
-    voteClassDefault: 'btn-default',
-    voteClassPressed: 'btn-info',
-    voteClassToggle: 'btn-default btn-info'
+    voteClassDefault: 'btn-secondary-outline',
+    voteClassPressed: 'btn-primary-outline',
+    voteClassToggle: 'btn-secondary-outline btn-primary-outline'
 };
 
 var api = {
