@@ -7,6 +7,14 @@ use Route;
 
 class Helper
 {
+    /**
+     * Get active HTML class if route is active
+     *
+     * @param        $route   The name of the route to test
+     * @param string $active  The class to be returned if route is active
+     * @param string $default The class to be returned if route isn't active
+     * @return string
+     */
     public static function active($route, $active = 'active', $default = '')
     {
         if (is_null(Route::getCurrentRoute())) {
@@ -16,6 +24,12 @@ class Helper
         return Route::getCurrentRoute()->getName() == $route ? $active : $default;
     }
 
+    /**
+     * Check if the given string is a valid URL
+     *
+     * @param string $url The string to be checked
+     * @return bool
+     */
     public static function isValidUrl($url)
     {
         return (bool)filter_var($url, FILTER_VALIDATE_URL);
@@ -24,7 +38,7 @@ class Helper
     /**
      * Escape Markdown and convert to HTML
      *
-     * @param $markdown
+     * @param string $markdown The markdown to be escaped and converted to HTML
      * @return string
      */
     public static function markdownToHtml($markdown)
