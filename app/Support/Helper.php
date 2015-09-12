@@ -12,6 +12,7 @@ class Helper
         if (is_null(Route::getCurrentRoute())) {
             return $default;
         }
+
         return Route::getCurrentRoute()->getName() == $route ? $active : $default;
     }
 

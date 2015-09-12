@@ -7,15 +7,15 @@ function makeSafeUsername($string)
 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
-        'username' => makeSafeUsername($faker->userName),
-        'password' => bcrypt('password'),
+        'username'       => makeSafeUsername($faker->userName),
+        'password'       => bcrypt('password'),
         'remember_token' => str_random(10),
     ];
 });
 
 $factory->define(App\Post::class, function (Faker\Generator $faker) {
     return [
-        'title' => $faker->sentence,
+        'title'   => $faker->sentence,
         'content' => rand(0, 1) ? $faker->url : implode("\n\n", $faker->paragraphs),
     ];
 });
