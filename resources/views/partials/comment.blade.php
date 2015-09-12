@@ -6,7 +6,7 @@
     <div class="card-text">
         {!! Helper::markdownToHtml($comment->content) !!}
     </div>
-    <a class="card-link" href="{{ route('users.show', $comment->user->username) }}">
+    <a class="card-link" href="{{ route('user.show', $comment->user->username) }}">
         <i class="fa fa-user"></i>
         {{ $comment->user->username }}
     </a>

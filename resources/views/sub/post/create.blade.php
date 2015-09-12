@@ -6,7 +6,7 @@
     <div class="container">
         <h2>New post</h2>
         @include('partials.errors')
-        <form method="post" action="{{ route('subs.posts.store', $sub->name) }}">
+        <form method="post" action="{{ route('sub.post.store', $sub->name) }}">
             {!! csrf_field() !!}
             <fieldset class="form-group">
                 <label for="name">Title</label>
@@ -31,11 +31,11 @@
                 <i class="fa fa-comments"></i>
                 0 comments
             </a>
-            <a class="card-link" href="{{ route('subs.show', $sub->name) }}">
+            <a class="card-link" href="{{ route('sub.show', $sub->name) }}">
                 <i class="fa fa-tag"></i>
                 {{ $sub->name }}
             </a>
-            <a class="card-link" href="{{ route('users.show', Auth::user()->username) }}">
+            <a class="card-link" href="{{ route('user.show', Auth::user()->username) }}">
                 <i class="fa fa-user"></i>
                 {{ Auth::user()->username }}
             </a>

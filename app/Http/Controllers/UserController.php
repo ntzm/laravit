@@ -17,6 +17,6 @@ class UserController extends Controller
     {
         $user = $this->user->findByUsername($username);
 
-        return view('users.show', compact('user'));
+        return view('user.show', compact('user'));
     }
 }

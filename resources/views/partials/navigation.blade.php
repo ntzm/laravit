@@ -14,7 +14,7 @@
                         New <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="{{ route('subs.create') }}">Sub</a>
+                        <a class="dropdown-item" href="{{ route('sub.create') }}">Sub</a>
                         <a class="dropdown-item" href="#">Post</a>
                     </div>
                 </li>
@@ -25,7 +25,7 @@
                 </a>
                 <div class="dropdown-menu">
                     @if(Auth::check())
-                        <a class="dropdown-item" href="{{ route('users.show', Auth::user()->username) }}">@lang('general.profile')</a>
+                        <a class="dropdown-item" href="{{ route('user.show', Auth::user()->username) }}">@lang('general.profile')</a>
                         <a class="dropdown-item" href="{{ route('auth.logout') }}">@lang('general.logout')</a>
                     @else
                         <a class="dropdown-item" href="{{ route('auth.login') }}">@lang('general.login')</a>

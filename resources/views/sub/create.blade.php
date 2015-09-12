@@ -6,7 +6,7 @@
     <div class="container">
         <h2>New sub</h2>
         @include('partials.errors')
-        <form method="post" action="{{ route('subs.store') }}">
+        <form method="post" action="{{ route('sub.store') }}">
             {!! csrf_field() !!}
             <fieldset class="form-group">
                 <label for="name">Name</label>

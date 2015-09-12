@@ -27,14 +27,14 @@ class PostController extends Controller
         $sub = $this->sub->findByName($subName);
         $post = $this->post->findBySlugThroughSub($sub, $slug);
 
-        return view('subs.posts.show', compact('post'));
+        return view('sub.post.show', compact('post'));
     }
 
     public function create($subName)
     {
         $sub = $this->sub->findByName($subName);
 
-        return view('subs.posts.create', compact('sub'));
+        return view('sub.post.create', compact('sub'));
     }
 
     public function store($subName, StorePostRequest $request)
@@ -42,7 +42,7 @@ class PostController extends Controller
         $sub = $this->sub->findByName($subName);
         $post = $this->post->store($sub, $this->auth->user(), $request->all());
 
-        return redirect()->route('subs.posts.show', [$sub->name, $post->slug]);
+        return redirect()->route('sub.post.show', [$sub->name, $post->slug]);
     }
 
     public function vote($subName, $slug, $value)

@@ -23,18 +23,18 @@ class SubController extends Controller
     {
         $sub = $this->sub->findByName($name);
 
-        return view('subs.show', compact('sub'));
+        return view('sub.show', compact('sub'));
     }
 
     public function create()
     {
-        return view('subs.create');
+        return view('sub.create');
     }
 
     public function store(StoreSubRequest $request)
     {
         $sub = $this->sub->store($this->auth->user(), $request->all());
 
-        return redirect()->route('subs.show', $sub->name);
+        return redirect()->route('sub.show', $sub->name);
     }
 }
