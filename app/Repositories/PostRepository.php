@@ -10,6 +10,9 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class PostRepository extends Repository
 {
+    /**
+     * @var Post
+     */
     private $post;
 
     public function __construct(Post $post)
@@ -17,11 +20,23 @@ class PostRepository extends Repository
         $this->post = $post;
     }
 
+    /**
+     * Get paginated posts
+     *
+     * @return \Illuminate\Pagination\Paginator
+     */
     public function all()
     {
         return $this->post->hot()->simplePaginate($this->resultsPerPage);
     }
 
+    /**
+     * Find a post by slug that belongs to a given sub
+     *
+     * @param Sub $sub  The sub the post belongs to
+     * @param     $slug The slug of the post
+     * @return Post
+     */
     public function findBySlugThroughSub(Sub $sub, $slug)
     {
         $post = $this->post->where('slug', $slug)->where('sub_id', $sub->id)->firstOrFail();
@@ -29,6 +44,14 @@ class PostRepository extends Repository
         return $post;
     }
 
+    /**
+     * Create and store a new post
+     *
+     * @param Sub   $sub    The sub the post is being posted to
+     * @param User  $user   The user that posted the post
+     * @param array $values The values to be filled
+     * @return Post
+     */
     public function store(Sub $sub, User $user, array $values)
     {
         $post = $this->post->create($values);
@@ -42,6 +65,13 @@ class PostRepository extends Repository
         return $post;
     }
 
+    /**
+     * Vote on a post
+     *
+     * @param Post $post  The post being voted on
+     * @param User $user  The user voting
+     * @param int  $value The vote weight
+     */
     public function vote(Post $post, User $user, $value)
     {
         if (!in_array($value, [-1, 0, 1])) {
