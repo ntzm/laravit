@@ -5,9 +5,6 @@
     <div class="collapse navbar-toggleable-xs" id="navbar">
         <a class="navbar-brand" href="{{ route('index') }}">Laravit</a>
         <ul class="nav navbar-nav">
-            <li class="nav-item {{ Helper::active('index') }}">
-                <a class="nav-link" href="{{ route('index') }}">Frontpage</a>
-            </li>
             @if(Auth::check())
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="false">
