@@ -25,11 +25,11 @@
                 </a>
                 <div class="dropdown-menu">
                     @if(Auth::check())
-                        <a class="dropdown-item" href="{{ route('users.show', Auth::user()->username) }}">Profile</a>
-                        <a class="dropdown-item" href="{{ route('auth.logout') }}">Logout</a>
+                        <a class="dropdown-item" href="{{ route('users.show', Auth::user()->username) }}">@lang('general.profile')</a>
+                        <a class="dropdown-item" href="{{ route('auth.logout') }}">@lang('general.logout')</a>
                     @else
-                        <a class="dropdown-item" href="{{ route('auth.login') }}">Login</a>
-                        <a class="dropdown-item" href="{{ route('auth.register') }}">Register</a>
+                        <a class="dropdown-item" href="{{ route('auth.login') }}">@lang('general.login')</a>
+                        <a class="dropdown-item" href="{{ route('auth.register') }}">@lang('general.register')</a>
                     @endif
                 </div>
             </li>
