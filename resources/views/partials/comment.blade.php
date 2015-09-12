@@ -12,14 +12,7 @@
     </a>
     @if(Auth::check())
         <hr>
-        <div class="btn-group" role="group">
-            <button type="button" class="btn btn-{{ $voteValue == 1 ? 'primary' : 'secondary' }}-outline" data-vote="1">
-                <i class="fa fa-thumbs-up"></i>
-            </button>
-            <button type="button" class="btn btn-{{ $voteValue == -1 ? 'primary' : 'secondary' }}-outline" data-vote="-1">
-                <i class="fa fa-thumbs-down"></i>
-            </button>
-        </div>
+        @include('partials.vote-buttons')
         <button class="btn btn-primary">Reply</button>
     @endif
     @if($comment->children()->exists())
