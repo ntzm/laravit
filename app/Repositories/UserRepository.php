@@ -25,7 +25,7 @@ class UserRepository extends Repository
     public function findByUsername($username)
     {
         $user = $this->user->where('username', $username)->firstOrFail();
-        $user->posts = $user->posts()->simplePaginate($this->resultsPerPage);
+        $user->posts = $user->posts()->simplePaginate($this::RESULTS_PER_PAGE);
 
         return $user;
     }

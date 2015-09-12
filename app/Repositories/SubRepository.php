@@ -26,7 +26,7 @@ class SubRepository extends Repository
     public function findByName($name)
     {
         $sub = $this->sub->where('name', $name)->firstOrFail();
-        $sub->posts = $sub->posts()->simplePaginate($this->resultsPerPage);
+        $sub->posts = $sub->posts()->simplePaginate($this::RESULTS_PER_PAGE);
 
         return $sub;
     }

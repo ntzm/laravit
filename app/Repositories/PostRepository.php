@@ -27,7 +27,7 @@ class PostRepository extends Repository
      */
     public function all()
     {
-        return $this->post->hot()->simplePaginate($this->resultsPerPage);
+        return $this->post->hot()->simplePaginate($this::RESULTS_PER_PAGE);
     }
 
     /**
