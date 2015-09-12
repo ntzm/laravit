@@ -8,7 +8,8 @@ class HomeController extends Controller
 {
     private $post;
 
-    public function __construct(PostRepository $post) {
+    public function __construct(PostRepository $post)
+    {
         $this->post = $post;
     }
 

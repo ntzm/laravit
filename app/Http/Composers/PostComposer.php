@@ -12,8 +12,7 @@ class PostComposer
         $voteValue = 0;
         $post = $view->getData()['post'];
 
-        if (Auth::check())
-        {
+        if (Auth::check()) {
             $votes = $post->votes()->where('user_id', Auth::id());
 
             if ($votes->count() > 0) {

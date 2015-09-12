@@ -12,8 +12,7 @@ class CommentComposer
         $voteValue = 0;
         $comment = $view->getData()['comment'];
 
-        if (Auth::check())
-        {
+        if (Auth::check()) {
             $votes = $comment->votes()->where('user_id', Auth::id());
 
             if ($votes->count() > 0) {

@@ -1,13 +1,10 @@
 <?php
 
 return [
-
     'files' => [
         //
     ],
-
     'providers' => [
         //
     ],
-
 ];

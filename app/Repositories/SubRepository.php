@@ -9,7 +9,8 @@ class SubRepository extends Repository
 {
     private $sub;
 
-    public function __construct(Sub $sub) {
+    public function __construct(Sub $sub)
+    {
         $this->sub = $sub;
     }
 

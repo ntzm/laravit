@@ -1,23 +1,14 @@
 <?php
 
 return [
-
     'debug' => env('APP_DEBUG', false),
-
     'url' => 'http://localhost',
-
     'timezone' => 'UTC',
-
     'locale' => 'en',
-
     'fallback_locale' => 'en',
-
     'key' => env('APP_KEY', 'SomeRandomString'),
-
     'cipher' => 'AES-256-CBC',
-
     'log' => 'single',
-
     'providers' => [
 
         /*
@@ -57,11 +48,8 @@ return [
         App\Providers\ComposerServiceProvider::class,
         Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
         GrahamCampbell\Markdown\MarkdownServiceProvider::class,
-
     ],
-
     'aliases' => [
-
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,
@@ -97,7 +85,5 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Helper' => App\Support\Helper::class,
         'Markdown' => GrahamCampbell\Markdown\Facades\Markdown::class,
-
     ],
-
 ];
