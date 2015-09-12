@@ -1,4 +1,7 @@
 <div class="card card-block" data-sub="{{ $post->sub->name }}" data-slug="{{ $post->slug }}">
+    @if(!empty($post->thumbnail_url))
+        <img class="img-thumbnail pull-left" width="100" src="{{ asset($post->thumbnail_url) }}">
+    @endif
     <h4 class="card-title">
         <a href="{{ Helper::isValidUrl($post->content) ? $post->content : route('sub.post.show', [$post->sub->name, $post->slug]) }}">
             {{ $post->title }}

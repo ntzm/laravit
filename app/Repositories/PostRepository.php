@@ -2,14 +2,19 @@
 
 namespace App\Repositories;
 
+use App\Jobs\GenerateThumbnail;
 use App\Post;
 use App\Sub;
 use App\User;
 use App\Vote;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Image;
 
 class PostRepository extends Repository
 {
+    use DispatchesJobs;
+
     /**
      * @var Post
      */
@@ -58,6 +63,8 @@ class PostRepository extends Repository
 
         $sub->posts()->save($post);
         $user->posts()->save($post);
+
+        $this->dispatch(new GenerateThumbnail($post, $values['content']));
 
         // Upvote your own posts automatically
         $this->vote($post, $user, 1);
