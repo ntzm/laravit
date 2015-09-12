@@ -48,6 +48,7 @@ return [
         App\Providers\ComposerServiceProvider::class,
         Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
         GrahamCampbell\Markdown\MarkdownServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
     ],
     'aliases'         => [
         'App'       => Illuminate\Support\Facades\App::class,
@@ -85,5 +86,6 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
         'Helper'    => App\Support\Helper::class,
         'Markdown'  => GrahamCampbell\Markdown\Facades\Markdown::class,
+        'Image'     => Intervention\Image\Facades\Image::class,
     ],
 ];
