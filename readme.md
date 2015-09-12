@@ -51,6 +51,10 @@ Run the migrations
 php artisan migrate
 ```
 
+## License
+
+[License](LICENSE.md).
+
 ## Contributing
 
 Please read the [contributing guide](CONTRIBUTING.md).
