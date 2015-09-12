@@ -2,6 +2,13 @@
 
 @section('title', $post->title)
 
+@section('head')
+    @include('partials.meta', [
+        'title'       => $post->title,
+        'description' => $post->comments->count() . ' comments so far on Laravit',
+    ])
+@endsection
+
 @section('content')
     @include('partials.post', compact('post'))
     <h2>Comments</h2>
