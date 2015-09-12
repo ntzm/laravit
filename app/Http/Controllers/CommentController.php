@@ -28,7 +28,7 @@ class CommentController extends Controller
     {
         $sub = $this->sub->findByName($subName);
         $post = $this->post->findBySlugThroughSub($sub, $postSlug);
-        $this->comment->store($request, $post, $this->auth->user());
+        $this->comment->store($post, $this->auth->user(), $request->all());
 
         return redirect()->back();
     }
