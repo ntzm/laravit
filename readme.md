@@ -50,3 +50,7 @@ Run the migrations
 ```
 php artisan migrate
 ```
+
+## Contributing
+
+Please read the [contributing guide](CONTRIBUTING.md).
