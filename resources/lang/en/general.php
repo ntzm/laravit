@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     'count' => [
         'points' => ':count point|:count points',
         'comments' => ':count comment|:count comments',
@@ -14,5 +13,4 @@ return [
     'password' => 'Password',
     'confirm-password' => 'Confirm password',
     'remember-me' => 'Remember me',
-
 ];
