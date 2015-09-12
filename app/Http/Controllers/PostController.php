@@ -42,7 +42,9 @@ class PostController extends Controller
         $sub = $this->sub->findByName($subName);
         $post = $this->post->store($sub, $this->auth->user(), $request->all());
 
-        return redirect()->route('sub.post.show', [$sub->name, $post->slug]);
+        return $post;
+
+        //return redirect()->route('sub.post.show', [$sub->name, $post->slug]);
     }
 
     public function vote($subName, $slug, $value)
