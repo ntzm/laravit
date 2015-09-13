@@ -8,6 +8,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Bus\SelfHandling;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Image;
+use Intervention\Image\Exception\NotReadableException;
 
 class GenerateThumbnail extends Job implements SelfHandling, ShouldQueue
 {
