@@ -5,3 +5,10 @@ textarea {
 .img-responsive {
     width: 100%;
 }
+
+.embed-responsive {
+    /*
+    Fix strange bug which causes embedded YouTube videos to disappear after a few seconds
+    */
+    overflow: visible;
+}
