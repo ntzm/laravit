@@ -10,7 +10,9 @@
 @endsection
 
 @section('content')
-    @include('partials.post', compact('post'))
+    <div class="card-columns">
+        @include('partials.post', compact('post'))
+    </div>
     <h2>Comments</h2>
     @if (Auth::check())
         <div class="row">
