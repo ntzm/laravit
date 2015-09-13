@@ -5,10 +5,6 @@
                 {{ $post->title }}
             </a>
         </h4>
-        <h6 class="card-subtitle">
-            @choice('general.count.points', $score)
-            <span class="text-muted">{{ $post->created_at->diffForHumans() }}</span>
-        </h6>
         @if(!empty($embedHtml))
             </div><!-- /.card-block -->
             <div class="embed-responsive embed-responsive-16by9">
@@ -21,6 +17,9 @@
                 {!! Helper::markdownToHtml($post->content) !!}
             </div>
         @endunless
+        <p class="card-text">
+            <small class="text-muted">posted {{ $post->created_at->diffForHumans() }}</small>
+        </p>
         <a class="card-link" href="{{ route('sub.post.show', [$post->sub->name, $post->slug]) }}">
             <i class="fa fa-comments"></i>
             @choice('general.count.comments', $post->comments()->count())
