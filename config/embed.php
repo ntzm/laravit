@@ -2,7 +2,7 @@
 
 return [
     'ssl'            => false,
-    'google_api_key' => 'YOUR API KEY HERE',
+    'google_api_key' => env('YOUTUBE_API_KEY'),
     'providers'      => [
         'youtubePlaylistVideo' => [
             'name'         => 'YouTube Playlist',
