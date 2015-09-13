@@ -1,3 +1,7 @@
 textarea {
     resize: vertical;
 }
+
+.img-responsive {
+    width: 100%;
+}

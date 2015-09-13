@@ -29,7 +29,11 @@ class GenerateThumbnail extends Job implements SelfHandling, ShouldQueue
             $thumbnailUrl = 'img/thumbs/' . $this->post->id . '.jpg';
 
             $thumbnail = Image::make($this->imageUrl);
-            $thumbnail->fit(140);
+            $thumbnail->fit(160, 90);
+
+            // Blur it a little, because we will be scaling it
+            $thumbnail->blur(10);
+
             $thumbnail->save(public_path($thumbnailUrl));
         } catch (NotReadableException $e) {
             $thumbnailUrl = null;

@@ -5,11 +5,15 @@
                 {{ $post->title }}
             </a>
         </h4>
-        @if(!empty($embedHtml))
+        @if(!empty($embedHtml) || !empty($post->thumbnail_url))
             </div><!-- /.card-block -->
-            <div class="embed-responsive embed-responsive-16by9">
-                {!! $embedHtml !!}
-            </div>
+            @if(!empty($embedHtml))
+                <div class="embed-responsive embed-responsive-16by9">
+                    {!! $embedHtml !!}
+                </div>
+            @elseif(!empty($post->thumbnail_url))
+                <img class="img-responsive img-preview" src="{{ asset($post->thumbnail_url) }}">
+            @endif
             <div class="card-block">
         @endif
         @unless(Helper::isValidUrl($post->content))
