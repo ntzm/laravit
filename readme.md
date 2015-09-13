@@ -38,6 +38,7 @@ Note: If you are running the site in [Homestead](http://laravel.com/docs/5.1/hom
 database values should work out of the box.
 
 To get a YouTube API key:
+
 1. Go to the [Google Developers Console](https://console.developers.google.com/project) and create a new project
 2. Open 'Enable APIs'
 3. Open 'YouTube Data API'
