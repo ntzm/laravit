@@ -45,4 +45,16 @@ class Helper
     {
         return Markdown::convertToHtml(e($markdown));
     }
+
+    /**
+     * Escape a name.
+     * This is used in model factories, as Faker generates usernames that do not follow the validation rules
+     *
+     * @param string $name The unescaped name
+     * @return string The escaped name
+     */
+    public static function escapeName($name)
+    {
+        return strtolower(substr(str_replace('.', '_', $name), 0, 20));
+    }
 }
