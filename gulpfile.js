@@ -17,7 +17,6 @@ elixir(function (mix) {
         [
             'bower/jquery/dist/jquery.js',
             'bower/bootstrap/dist/js/bootstrap.js',
-            'bower/commonmark/dist/commonmark.js',
             'js/main.js'
         ],
         'public/js/app.js',
