@@ -12,7 +12,7 @@
                     {!! $embedHtml !!}
                 </div>
             @elseif(!empty($post->thumbnail_url))
-                <img class="img-responsive img-preview" src="{{ asset($post->thumbnail_url) }}">
+                <img class="img-responsive" src="{{ asset($post->thumbnail_url) }}">
             @endif
             <div class="card-block">
         @endif

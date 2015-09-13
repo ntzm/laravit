@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Jobs\GenerateThumbnail;
+use App\Jobs\GeneratePreview;
 use App\Post;
 use App\Sub;
 use App\User;
@@ -64,7 +64,7 @@ class PostRepository extends Repository
         $sub->posts()->save($post);
         $user->posts()->save($post);
 
-        $this->dispatch(new GenerateThumbnail($post, $values['content']));
+        $this->dispatch(new GeneratePreview($post));
 
         // Upvote your own posts automatically
         $this->vote($post, $user, 1);

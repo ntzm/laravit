@@ -24,3 +24,8 @@ Route::group(['prefix' => 'auth', 'as' => 'auth.'], function () {
     get('register', ['as' => 'register', 'uses' => 'Auth\AuthController@getRegister']);
     post('register', ['as' => 'postRegister', 'uses' => 'Auth\AuthController@postRegister']);
 });
+
+get('images/previews/{publicId}.jpg', function ($publicId) {
+    // Doesn't deserve its own controller... yet
+    return Storage::get('images/previews/' . $publicId . '.jpg');
+});
