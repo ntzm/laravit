@@ -3,14 +3,24 @@
 namespace App\Http\Composers;
 
 use Auth;
+use Embed;
 use Illuminate\Contracts\View\View;
 
 class PostComposer
 {
     public function compose(View $view)
     {
-        $voteValue = 0;
         $post = $view->getData()['post'];
+
+        $embedHtml = null;
+
+        $embed = Embed::make($post->content)->parseUrl();
+
+        if ($embed) {
+            $embedHtml = $embed->getHtml();
+        }
+
+        $voteValue = 0;
 
         if (Auth::check()) {
             $votes = $post->votes()->where('user_id', Auth::id());
@@ -22,5 +32,6 @@ class PostComposer
 
         $view->with('voteValue', $voteValue);
         $view->with('score', $post->votes()->sum('value'));
+        $view->with('embedHtml', $embedHtml);
     }
 }

@@ -11,11 +11,13 @@
         @choice('general.count.points', $score)
         <span class="text-muted">{{ $post->created_at->diffForHumans() }}</span>
     </h6>
-    @unless(Helper::isValidUrl($post->content))
-        <div class="card-text">
+    <div class="card-text">
+        @if(Helper::isValidUrl($post->content))
+            {!! $embedHtml !!}
+        @else
             {!! Helper::markdownToHtml($post->content) !!}
-        </div>
-    @endunless
+        @endif
+    </div>
     <a class="card-link" href="{{ route('sub.post.show', [$post->sub->name, $post->slug]) }}">
         <i class="fa fa-comments"></i>
         @choice('general.count.comments', $post->comments()->count())
