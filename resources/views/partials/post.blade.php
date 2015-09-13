@@ -1,6 +1,5 @@
 <div class="card" data-sub="{{ $post->sub->name }}" data-slug="{{ $post->slug }}">
     <div class="card-block">
-
         <h4 class="card-title">
             <a href="{{ Helper::isValidUrl($post->content) ? $post->content : route('sub.post.show', [$post->sub->name, $post->slug]) }}">
                 {{ $post->title }}
@@ -11,8 +10,10 @@
             <span class="text-muted">{{ $post->created_at->diffForHumans() }}</span>
         </h6>
         @if(!empty($embedHtml))
-            </div>
+            </div><!-- /.card-block -->
+            <div class="embed-responsive embed-responsive-16by9">
                 {!! $embedHtml !!}
+            </div>
             <div class="card-block">
         @endif
         @unless(Helper::isValidUrl($post->content))
@@ -36,5 +37,5 @@
             <hr>
             @include('partials.vote-buttons', compact('voteValue'))
         @endif
-    </div>
+    </div><!-- /.card-block -->
 </div>
