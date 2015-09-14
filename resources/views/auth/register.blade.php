@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
         <h2>@lang('general.register')</h2>
-        @include('partials.errors')
+        @include('partials.validation-messages')
         <form method="post" action="{{ route('auth.postRegister') }}">
             {!! csrf_field() !!}
             <fieldset class="form-group">

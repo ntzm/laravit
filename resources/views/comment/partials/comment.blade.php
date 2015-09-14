@@ -17,6 +17,6 @@
     @endif
     @if($comment->children()->exists())
         <hr>
-        @include('partials.comments', ['comments' => $comment->children])
+        @include('comment.partials.comments', ['comments' => $comment->children])
     @endif
 </div>

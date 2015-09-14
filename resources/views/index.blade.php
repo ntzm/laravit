@@ -1,5 +1,5 @@
 @extends('template')
 
 @section('content')
-    @include('partials.posts', compact('posts'))
+    @include('post.partials.posts', compact('posts'))
 @endsection

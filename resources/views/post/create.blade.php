@@ -5,7 +5,7 @@
 @section('content')
     <div class="container">
         <h2>New post</h2>
-        @include('partials.errors')
+        @include('partials.validation-messages')
         <form method="post" action="{{ route('sub.post.store', $sub->name) }}">
             {!! csrf_field() !!}
             <fieldset class="form-group">

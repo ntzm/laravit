@@ -11,7 +11,7 @@
 
 @section('content')
     <div class="card-columns">
-        @include('partials.post', compact('post'))
+        @include('post.partials.post', compact('post'))
     </div>
     <h2>Comments</h2>
     @if (Auth::check())
@@ -29,5 +29,5 @@
         </div>
         <hr>
     @endif
-    @include('partials.comments', ['comments' => $post->comments()->noParent()->get()])
+    @include('comment.partials.comments', ['comments' => $post->comments()->noParent()->get()])
 @endsection

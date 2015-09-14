@@ -3,7 +3,7 @@
 @else
     <div class="card-columns">
         @foreach($posts as $post)
-            @include('partials.post', compact('post'))
+            @include('post.partials.post', compact('post'))
         @endforeach
     </div>
     {!! $posts->render() !!}

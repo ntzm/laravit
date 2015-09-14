@@ -27,14 +27,14 @@ class PostController extends Controller
         $sub = $this->sub->findByName($subName);
         $post = $this->post->findBySlugThroughSub($sub, $slug);
 
-        return view('sub.post.show', compact('post'));
+        return view('post.show', compact('post'));
     }
 
     public function create($subName)
     {
         $sub = $this->sub->findByName($subName);
 
-        return view('sub.post.create', compact('sub'));
+        return view('post.create', compact('sub'));
     }
 
     public function store($subName, StorePostRequest $request)

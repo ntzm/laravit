@@ -9,5 +9,5 @@
             Joined {{ $user->created_at->diffForHumans() }}
         </div>
     </div>
-    @include('partials.posts', ['posts' => $user->posts])
+    @include('post.partials.posts', ['posts' => $user->posts])
 @endsection
