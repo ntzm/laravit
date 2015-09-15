@@ -100,7 +100,7 @@ return [
             'data'         => null,
             'dataCallback' => function ($embed) {
                 $provider = $embed->getProvider();
-                $url = $provider->info->dataUrl . '&key=' . config('embed.google_api_key');
+                $url = $provider->info->dataUrl.'&key='.config('embed.google_api_key');
                 $response = json_decode(file_get_contents($url))->items[0];
 
                 return [

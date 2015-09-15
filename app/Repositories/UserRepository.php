@@ -17,7 +17,7 @@ class UserRepository extends Repository
     }
 
     /**
-     * Find a user by username
+     * Find a user by username.
      *
      * @param string $username
      * @return User

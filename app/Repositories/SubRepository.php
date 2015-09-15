@@ -18,7 +18,7 @@ class SubRepository extends Repository
     }
 
     /**
-     * Find a sub by name
+     * Find a sub by name.
      *
      * @param string $name The name of the sub
      * @return Sub
@@ -32,7 +32,7 @@ class SubRepository extends Repository
     }
 
     /**
-     * Create and store a sub
+     * Create and store a sub.
      *
      * @param User  $user   The user creating the sub
      * @param array $values The values to be filled

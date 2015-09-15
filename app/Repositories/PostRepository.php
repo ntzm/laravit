@@ -9,7 +9,6 @@ use App\User;
 use App\Vote;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Bus\DispatchesJobs;
-use Image;
 
 class PostRepository extends Repository
 {
@@ -26,7 +25,7 @@ class PostRepository extends Repository
     }
 
     /**
-     * Get paginated posts
+     * Get paginated posts.
      *
      * @return \Illuminate\Pagination\Paginator
      */
@@ -36,7 +35,7 @@ class PostRepository extends Repository
     }
 
     /**
-     * Find a post by slug that belongs to a given sub
+     * Find a post by slug that belongs to a given sub.
      *
      * @param Sub $sub  The sub the post belongs to
      * @param     $slug The slug of the post
@@ -50,7 +49,7 @@ class PostRepository extends Repository
     }
 
     /**
-     * Create and store a new post
+     * Create and store a new post.
      *
      * @param Sub   $sub    The sub the post is being posted to
      * @param User  $user   The user that posted the post
@@ -73,7 +72,7 @@ class PostRepository extends Repository
     }
 
     /**
-     * Vote on a post
+     * Vote on a post.
      *
      * @param Post $post  The post being voted on
      * @param User $user  The user voting
@@ -81,7 +80,7 @@ class PostRepository extends Repository
      */
     public function vote(Post $post, User $user, $value)
     {
-        if (!in_array($value, [-1, 0, 1])) {
+        if (! in_array($value, [-1, 0, 1])) {
             abort(400); // TODO: Throw an exception here
         }
 

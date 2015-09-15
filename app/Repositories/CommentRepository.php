@@ -19,7 +19,7 @@ class CommentRepository extends Repository
     }
 
     /**
-     * Create and store a new comment
+     * Create and store a new comment.
      *
      * @param Post  $post   The post that is being commented on
      * @param User  $user   The user that is commenting

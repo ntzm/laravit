@@ -32,7 +32,7 @@ class Post extends Model implements SluggableInterface
             ->select('posts.*', 'votes.value')
             ->groupBy('posts.id')
             ->orderBy(DB::raw(
-                'log10(abs(sum(votes.value)) + 1 ) * sign(sum(votes.value))' .
+                'log10(abs(sum(votes.value)) + 1 ) * sign(sum(votes.value))'.
                 '+ (unix_timestamp(posts.created_at) / 300000)'
             ), 'desc');
     }
