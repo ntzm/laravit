@@ -22,7 +22,7 @@ class GeneratePreview extends Job implements SelfHandling, ShouldQueue
 
     private function getPreviewPath($publicId)
     {
-        return self::PATH . $publicId . '.' . self::FORMAT;
+        return self::PATH.$publicId.'.'.self::FORMAT;
     }
 
     public function __construct(Post $post)
@@ -32,7 +32,6 @@ class GeneratePreview extends Job implements SelfHandling, ShouldQueue
 
     public function handle()
     {
-
         try {
             $thumbnail = Image::make($this->post->content);
         } catch (NotReadableException $e) {

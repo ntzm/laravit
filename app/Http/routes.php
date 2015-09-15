@@ -27,5 +27,5 @@ Route::group(['prefix' => 'auth', 'as' => 'auth.'], function () {
 
 get('images/previews/{publicId}.jpg', function ($publicId) {
     // Doesn't deserve its own controller... yet
-    return Storage::get('images/previews/' . $publicId . '.jpg');
+    return Storage::get('images/previews/'.$publicId.'.jpg');
 });

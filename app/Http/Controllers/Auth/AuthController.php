@@ -24,14 +24,14 @@ class AuthController extends Controller
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
     /**
-     * Where to redirect to after logging in or registering
+     * Where to redirect to after logging in or registering.
      *
      * @var string
      */
     protected $redirectTo = '/';
 
     /**
-     * The column to be used as the unique username
+     * The column to be used as the unique username.
      *
      * @var string
      */

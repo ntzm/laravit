@@ -8,7 +8,7 @@ use Eloquent;
 abstract class Model extends Eloquent
 {
     /**
-     * Check if given model is equal to this model
+     * Check if given model is equal to this model.
      *
      * @param Model $model The model to be tested
      * @return bool
@@ -19,7 +19,7 @@ abstract class Model extends Eloquent
     }
 
     /**
-     * Order query by random
+     * Order query by random.
      *
      * @param $query
      * @return mixed
