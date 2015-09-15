@@ -1,5 +1,7 @@
 # Laravit
 
+[![StyleCI](https://styleci.io/repos/41639876/shield)](https://styleci.io/repos/41639876)
+
 ## Installation
 
 ### Prerequisites
