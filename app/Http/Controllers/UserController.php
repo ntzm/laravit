@@ -2,21 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\UserRepository;
+use App\User;
 
 class UserController extends Controller
 {
-    private $user;
-
-    public function __construct(UserRepository $user)
-    {
-        $this->user = $user;
-    }
-
     public function show($username)
     {
-        $user = $this->user->findByUsername($username);
+        $user = User::where('username', $username)->firstOrFail();
+        $posts = $user->posts()->simplePaginate(15);
 
-        return view('user.show', compact('user'));
+        return view('user.show', compact('user', 'posts'));
     }
 }

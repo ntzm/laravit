@@ -3,27 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreSubRequest;
-use App\Repositories\SubRepository;
-use Illuminate\Contracts\Auth\Guard as Auth;
+use App\Sub;
 
 class SubController extends Controller
 {
-    private $sub;
-    private $auth;
-
-    public function __construct(SubRepository $sub, Auth $auth)
+    public function __construct()
     {
-        $this->sub = $sub;
-        $this->auth = $auth;
-
         $this->middleware('auth', ['except' => ['show']]);
     }
 
     public function show($name)
     {
-        $sub = $this->sub->findByName($name);
+        $sub = Sub::where('name', $name)->firstOrFail();
+        $posts = $sub->posts()->simplePaginate(15);
 
-        return view('sub.show', compact('sub'));
+        return view('sub.show', compact('sub', 'posts'));
     }
 
     public function create()
@@ -33,7 +27,10 @@ class SubController extends Controller
 
     public function store(StoreSubRequest $request)
     {
-        $sub = $this->sub->store($this->auth->user(), $request->all());
+        $sub = Sub::create($request->all());
+        $sub->owner()->associate(auth()->user());
+
+        $sub->save();
 
         return redirect()->route('sub.show', $sub->name);
     }

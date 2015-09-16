@@ -3,53 +3,68 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequest;
-use App\Repositories\PostRepository;
-use App\Repositories\SubRepository;
-use Illuminate\Contracts\Auth\Guard as Auth;
+use App\Post;
+use App\Sub;
+use App\Vote;
 
 class PostController extends Controller
 {
-    private $post;
-    private $sub;
-    private $auth;
 
-    public function __construct(PostRepository $post, SubRepository $sub, Auth $auth)
+    public function __construct()
     {
-        $this->post = $post;
-        $this->sub = $sub;
-        $this->auth = $auth;
-
         $this->middleware('auth', ['except' => ['show']]);
     }
 
     public function show($subName, $slug)
     {
-        $sub = $this->sub->findByName($subName);
-        $post = $this->post->findBySlugThroughSub($sub, $slug);
+        $sub = Sub::where('name', $subName)->firstOrFail();
+        $post = Post::where('slug', $slug)->where('sub_id', $sub->id)->firstOrFail();
 
         return view('post.show', compact('post'));
     }
 
     public function create($subName)
     {
-        $sub = $this->sub->findByName($subName);
+        $sub = Sub::where('name', $subName)->firstOrFail();
 
         return view('post.create', compact('sub'));
     }
 
     public function store($subName, StorePostRequest $request)
     {
-        $sub = $this->sub->findByName($subName);
-        $post = $this->post->store($sub, $this->auth->user(), $request->all());
+        $sub = Sub::where('name', $subName)->firstOrFail();
+
+        $post = Post::create($request->all());
+        $post->sub()->associate($sub);
+        $post->user()->associate(auth()->user());
+
+        $post->save();
 
         return redirect()->route('sub.post.show', [$sub->name, $post->slug]);
     }
 
     public function vote($subName, $slug, $value)
     {
-        $sub = $this->sub->findByName($subName);
-        $post = $this->post->findBySlugThroughSub($sub, $slug);
+        if (! in_array($value, [-1, 0, 1])) {
+            abort(400);
+        }
 
-        $this->post->vote($post, $this->auth->user(), $value);
+        $sub = Sub::where('name', $subName)->firstOrFail();
+        $post = Post::where('slug', $slug)->where('sub_id', $sub->id)->firstOrFail();
+
+        try {
+            $vote = $post->votes()->where('user_id', auth()->id())->firstOrFail();
+        } catch (ModelNotFoundException $e) {
+            $vote = new Vote;
+        }
+
+        $vote->value = $value;
+        $vote->user()->associate(auth()->user());
+        $vote->voteable()->associate($post);
+
+        $vote->save();
+
+        $post->score += $value;
+        $post->save();
     }
 }
