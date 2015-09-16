@@ -23,21 +23,41 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'remember_token',
     ];
 
+    /**
+     * Get all posts user has made.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function posts()
     {
         return $this->hasMany('App\Post');
     }
 
+    /**
+     * Get all subs user owns.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function subs()
     {
         return $this->hasMany('App\Sub', 'owner_id');
     }
 
+    /**
+     * Get all votes user has made.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function votes()
     {
         return $this->hasMany('App\Vote');
     }
 
+    /**
+     * Get all comments user has made.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function comments()
     {
         return $this->hasMany('App\Comment');

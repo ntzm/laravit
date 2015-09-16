@@ -21,8 +21,8 @@ abstract class Model extends Eloquent
     /**
      * Order query by random.
      *
-     * @param $query
-     * @return mixed
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeRandom($query)
     {
