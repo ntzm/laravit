@@ -15,15 +15,6 @@ Required:
 
 ### Method
 
-Use `git` to clone this repository.
-
-```
-git clone https://github.com/natzim/laravit
-cd laravit/
-```
-
----
-
 Copy the example environment file.
 
 The `.env` file stores all of the values that may change depending on where it is run. Therefore, the `.env` file should
@@ -36,9 +27,6 @@ cp .env.example .env
 At this point, you will need to edit `.env` and add your own environment values. The database values must be correct, or
 you will get errors further on in the installation.
 
-Note: If you are running the site in [Homestead](http://laravel.com/docs/5.1/homestead) (which I highly recommend), the
-database values should work out of the box.
-
 To get a YouTube API key:
 
 1. Go to the [Google Developers Console](https://console.developers.google.com/project) and create a new project
@@ -50,18 +38,20 @@ To get a YouTube API key:
 7. Choose a descriptive name for your key, and optionally provide the IP addresses that the API will be queried from
 8. Copy and paste your API key into the `YOUTUBE_API_KEY` in the `.env` file
 
-If you did not modify the `APP_KEY` value in the `.env` file, you should generate a secure application key
-
-```
-php artisan key:generate
-```
-
 ---
 
 Install composer dependencies.
 
 ```
 composer install
+```
+
+---
+
+If you did not modify the `APP_KEY` value in the `.env` file, you should generate a secure application key.
+
+```
+php artisan key:generate
 ```
 
 ---
@@ -73,6 +63,12 @@ npm install
 ```
 
 ---
+
+Install frontend assets.
+
+```
+node_modules/.bin/bower install
+```
 
 Combine assets into public folder using gulp.
 
