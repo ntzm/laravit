@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Laravit\SortableInterface;
+use App\Laravit\SortableTrait;
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
 
