@@ -31,7 +31,6 @@ class PostComposer
         }
 
         $view->with('voteValue', $voteValue);
-        $view->with('score', $post->votes()->sum('value'));
         $view->with('embedHtml', $embedHtml);
     }
 }

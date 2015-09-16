@@ -95,5 +95,8 @@ class PostRepository extends Repository
 
         $user->votes()->save($vote);
         $post->votes()->save($vote);
+
+        $post->score += $value;
+        $post->save();
     }
 }
