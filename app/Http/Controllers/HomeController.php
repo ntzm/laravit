@@ -8,7 +8,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $posts = Post::simplePaginate(15);
+        $posts = Post::simplePaginate(self::RESULTS_PER_PAGE);
 
         return view('index', compact('posts'));
     }

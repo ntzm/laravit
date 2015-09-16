@@ -15,7 +15,7 @@ class SubController extends Controller
     public function show($name)
     {
         $sub = Sub::where('name', $name)->firstOrFail();
-        $posts = $sub->posts()->simplePaginate(15);
+        $posts = $sub->posts()->simplePaginate(self::RESULTS_PER_PAGE);
 
         return view('sub.show', compact('sub', 'posts'));
     }
