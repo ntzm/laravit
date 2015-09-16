@@ -4,11 +4,10 @@ namespace App;
 
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
-use Illuminate\Support\Facades\DB;
 
-class Post extends Model implements SluggableInterface
+class Post extends Model implements SluggableInterface, SortableInterface
 {
-    use SluggableTrait;
+    use SluggableTrait, SortableTrait;
 
     protected $sluggable = [
         'build_from' => 'title',
@@ -20,20 +19,6 @@ class Post extends Model implements SluggableInterface
         'title',
         'content',
     ];
-
-    /**
-     * Query hot posts.
-     *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public function scopeHot($query)
-    {
-        // Source: http://thisinterestsme.com/creating-whats-hot-algorithm-php-mysql
-        return $query->orderBy(DB::raw(
-            'log10(abs(score) + 1 ) * sign(score) + (unix_timestamp(created_at) / 300000)'
-        ), 'desc');
-    }
 
     /**
      * Find post author.
