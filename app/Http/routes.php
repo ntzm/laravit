@@ -1,30 +1,56 @@
 <?php
 
-get('/', ['as' => 'index', 'uses' => 'HomeController@index']);
+// General
+get('/', 'HomeController@index')->name('index');
 
-Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
-    get('{username}', ['as' => 'show', 'uses' => 'UserController@show']);
+// Users
+$router->group([
+    'prefix' => 'user',
+], function () use ($router) {
+
+    get('{username}', 'UserController@show')->name('user.show');
+
 });
 
-Route::group(['prefix' => 'sub', 'as' => 'sub.'], function () {
-    get('create', ['as' => 'create', 'uses' => 'SubController@create']);
-    post('create', ['as' => 'store', 'uses' => 'SubController@store']);
-    get('{name}', ['as' => 'show', 'uses' => 'SubController@show']);
-    get('{subName}/post/{slug}', ['as' => 'post.show', 'uses' => 'PostController@show']);
-    put('{subName}/post/{slug}/vote/{type}', ['as' => 'post.vote', 'uses' => 'PostController@vote']);
-    post('{subName}/post/{slug}/comment', ['as' => 'post.comment.store', 'uses' => 'CommentController@store']);
-    get('{subName}/submit', ['as' => 'post.create', 'uses' => 'PostController@create']);
-    post('{subName}/submit', ['as' => 'post.store', 'uses' => 'PostController@store']);
+// Subs
+$router->group([
+    'prefix' => 'sub',
+], function () use ($router) {
+
+    get('create', 'SubController@create')->name('sub.create');
+    post('create', 'SubController@store')->name('sub.store');
+    get('{name}', 'SubController@show')->name('sub.show');
+    get('{subName}/submit', 'PostController@create')->name('sub.post.create');
+    post('{subName}/submit', 'PostController@store')->name('sub.post.store');
+
+    // Posts
+    $router->group([
+        'prefix' => '{subName}/post/{slug}',
+    ], function () use ($router) {
+
+        get('/', 'PostController@show')->name('sub.post.show');
+        put('vote/{type}', 'PostController@vote')->name('sub.post.vote');
+        post('comment', 'CommentController@store')->name('sub.post.comment.store');
+
+    });
+
 });
 
-Route::group(['prefix' => 'auth', 'as' => 'auth.'], function () {
-    get('login', ['as' => 'login', 'uses' => 'Auth\AuthController@getLogin']);
-    post('login', ['as' => 'postLogin', 'uses' => 'Auth\AuthController@postLogin']);
-    get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
-    get('register', ['as' => 'register', 'uses' => 'Auth\AuthController@getRegister']);
-    post('register', ['as' => 'postRegister', 'uses' => 'Auth\AuthController@postRegister']);
+// Auth
+$router->group([
+    'prefix' => 'auth',
+    'namespace' => 'Auth',
+], function () use ($router) {
+
+    get('login', 'AuthController@getLogin')->name('auth.login');
+    post('login', 'AuthController@postLogin')->name('auth.postLogin');
+    get('logout', 'AuthController@getLogout')->name('auth.logout');
+    get('register', 'AuthController@getRegister')->name('auth.register');
+    post('register', 'AuthController@postRegister')->name('auth.postRegister');
+
 });
 
+// Misc
 get('images/previews/{publicId}.jpg', function ($publicId) {
     // Doesn't deserve its own controller... yet
     return Storage::get('images/previews/'.$publicId.'.jpg');
