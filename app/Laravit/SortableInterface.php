@@ -4,7 +4,7 @@ namespace App\Laravit;
 
 interface SortableInterface
 {
-	public function scopeSort($query, $type);
+    public function scopeSort($query, $type);
 
     public function scopeHot($query);
 
