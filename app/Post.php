@@ -29,7 +29,7 @@ class Post extends Model implements SluggableInterface, SortableInterface
      */
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo(User::class);
     }
 
     /**
@@ -39,7 +39,7 @@ class Post extends Model implements SluggableInterface, SortableInterface
      */
     public function sub()
     {
-        return $this->belongsTo('App\Sub');
+        return $this->belongsTo(Sub::class);
     }
 
     /**
@@ -49,7 +49,7 @@ class Post extends Model implements SluggableInterface, SortableInterface
      */
     public function votes()
     {
-        return $this->morphMany('App\Vote', 'voteable');
+        return $this->morphMany(Vote::class, 'voteable');
     }
 
     /**
@@ -59,6 +59,6 @@ class Post extends Model implements SluggableInterface, SortableInterface
      */
     public function comments()
     {
-        return $this->hasMany('App\Comment');
+        return $this->hasMany(Comment::class);
     }
 }

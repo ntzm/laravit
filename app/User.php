@@ -30,7 +30,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public function posts()
     {
-        return $this->hasMany('App\Post');
+        return $this->hasMany(Post::class);
     }
 
     /**
@@ -40,7 +40,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public function subs()
     {
-        return $this->hasMany('App\Sub', 'owner_id');
+        return $this->hasMany(Sub::class, 'owner_id');
     }
 
     /**
@@ -50,7 +50,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public function votes()
     {
-        return $this->hasMany('App\Vote');
+        return $this->hasMany(Vote::class);
     }
 
     /**
@@ -60,6 +60,6 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      */
     public function comments()
     {
-        return $this->hasMany('App\Comment');
+        return $this->hasMany(Comment::class);
     }
 }

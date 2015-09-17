@@ -17,7 +17,7 @@ class Sub extends Model
      */
     public function owner()
     {
-        return $this->belongsTo('App\User', 'owner_id');
+        return $this->belongsTo(User::class, 'owner_id');
     }
 
     /**
@@ -27,6 +27,6 @@ class Sub extends Model
      */
     public function posts()
     {
-        return $this->hasMany('App\Post');
+        return $this->hasMany(Post::class);
     }
 }

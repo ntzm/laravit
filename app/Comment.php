@@ -28,7 +28,7 @@ class Comment extends Model
      */
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo(User::class);
     }
 
     /**
@@ -38,7 +38,7 @@ class Comment extends Model
      */
     public function post()
     {
-        return $this->belongsTo('App\Post');
+        return $this->belongsTo(Post::class);
     }
 
     /**
@@ -48,7 +48,7 @@ class Comment extends Model
      */
     public function votes()
     {
-        return $this->morphMany('App\Vote', 'voteable');
+        return $this->morphMany(Vote::class, 'voteable');
     }
 
     /**
@@ -58,7 +58,7 @@ class Comment extends Model
      */
     public function parent()
     {
-        return $this->belongsTo('App\Comment', 'parent_id');
+        return $this->belongsTo(self::class, 'parent_id');
     }
 
     /**
@@ -68,6 +68,6 @@ class Comment extends Model
      */
     public function children()
     {
-        return $this->hasMany('App\Comment', 'parent_id');
+        return $this->hasMany(self::class, 'parent_id');
     }
 }
