@@ -8,7 +8,7 @@
             @if(Auth::check())
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="false">
-                        New <span class="caret"></span>
+                        <i class="fa fa-plus"></i> New <span class="caret"></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" href="{{ route('sub.create') }}">Sub</a>
@@ -18,7 +18,7 @@
             @endif
             <li class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" type="button" aria-haspopup="true" aria-expanded="false">
-                    User <span class="caret"></span>
+                    <i class="fa fa-user"></i> User <span class="caret"></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     @if(Auth::check())
