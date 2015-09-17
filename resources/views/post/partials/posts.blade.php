@@ -5,5 +5,5 @@
     @foreach($posts as $post)
         @include('post.partials.post', compact('post'))
     @endforeach
-    {!! $posts->render() !!}
+    {!! $posts->appends('sort', Request::get('sort'))->render() !!}
 @endif
