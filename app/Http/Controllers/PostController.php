@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequest;
+use App\Jobs\GeneratePreview;
 use App\Post;
 use App\Sub;
 use App\Vote;
@@ -38,6 +39,8 @@ class PostController extends Controller
         $post->user()->associate(auth()->user());
 
         $post->save();
+
+        $this->dispatch(new GeneratePreview($post));
 
         return redirect()->route('sub.post.show', [$sub->name, $post->slug]);
     }

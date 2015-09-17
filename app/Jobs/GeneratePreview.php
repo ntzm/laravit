@@ -39,9 +39,9 @@ class GeneratePreview extends Job implements SelfHandling, ShouldQueue
         }
 
         // Fit thumbnail to 16:9 ratio
-        $thumbnail->fit(160, 90);
+        $thumbnail->fit(320, 180);
         // Blur thumbnail a little, because we will be scaling it up
-        $thumbnail->blur(10);
+        $thumbnail->blur(5);
 
         $publicId = uniqid();
         // Just because uniqid isn't actually unique
