@@ -12,7 +12,7 @@
 </head>
 <body>
 @include('partials.navigation')
-<div class="container-fluid">
+<div class="container">
     @yield('content')
 </div>
 <script src="{{ asset('js/app.js') }}"></script>
