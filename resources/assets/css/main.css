@@ -2,6 +2,10 @@ textarea {
     resize: vertical;
 }
 
+.navbar {
+    margin: 15px 0;
+}
+
 .img-responsive {
     width: 100%;
 }

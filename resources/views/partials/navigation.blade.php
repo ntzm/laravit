@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light bg-faded">
+<nav class="navbar navbar-dark bg-primary">
     <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#navbar">
         &#9776;
     </button>

@@ -11,8 +11,8 @@
     @yield('head')
 </head>
 <body>
-@include('partials.navigation')
 <div class="container">
+    @include('partials.navigation')
     @yield('content')
 </div>
 <script src="{{ asset('js/app.js') }}"></script>
