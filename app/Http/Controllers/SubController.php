@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreSubRequest;
 use App\Sub;
+use Request;
 
 class SubController extends Controller
 {
@@ -15,7 +16,7 @@ class SubController extends Controller
     public function show($name)
     {
         $sub = Sub::where('name', $name)->firstOrFail();
-        $posts = $sub->posts()->simplePaginate(self::RESULTS_PER_PAGE);
+        $posts = $sub->posts()->sort(Request::get('sort'))->simplePaginate(self::RESULTS_PER_PAGE);
 
         return view('sub.show', compact('sub', 'posts'));
     }

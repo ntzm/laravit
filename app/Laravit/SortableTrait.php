@@ -7,6 +7,25 @@ use DB;
 trait SortableTrait
 {
     /**
+     * Sort with type.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param string                                $type The sort type
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeSort($query, $type)
+    {
+        // Laravel magic turns scope{X}() into {x}(), but does not register under method_exists
+        $methodName = 'scope'.ucfirst($type);
+
+        if (method_exists($this, $methodName)) {
+            return $query->{$type}();
+        }
+
+        return $query->hot();
+    }
+
+    /**
      * Query hot resources.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
