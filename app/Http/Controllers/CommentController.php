@@ -12,7 +12,9 @@ class CommentController extends Controller
     public function store($subName, $postSlug, Request $request)
     {
         $sub = Sub::where('name', $subName)->firstOrFail();
-        $post = Post::where('slug', $postSlug)->where('sub_id', $sub->id)->firstOrFail();
+        $post = Post::where('slug', $postSlug)
+            ->where('sub_id', $sub->id)
+            ->firstOrFail();
 
         $comment = Comment::create($request->all());
         $comment->post()->associate($post);

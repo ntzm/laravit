@@ -1,7 +1,6 @@
 <div class="form-group">
     <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="sort-dropdown" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="sort-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Sort
         </button>
         <div class="dropdown-menu" aria-labelledby="sort-dropdown">

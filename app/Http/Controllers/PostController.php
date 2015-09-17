@@ -18,7 +18,9 @@ class PostController extends Controller
     public function show($subName, $slug)
     {
         $sub = Sub::where('name', $subName)->firstOrFail();
-        $post = Post::where('slug', $slug)->where('sub_id', $sub->id)->firstOrFail();
+        $post = Post::where('slug', $slug)
+            ->where('sub_id', $sub->id)
+            ->firstOrFail();
 
         return view('post.show', compact('post'));
     }
@@ -52,10 +54,14 @@ class PostController extends Controller
         }
 
         $sub = Sub::where('name', $subName)->firstOrFail();
-        $post = Post::where('slug', $slug)->where('sub_id', $sub->id)->firstOrFail();
+        $post = Post::where('slug', $slug)
+            ->where('sub_id', $sub->id)
+            ->firstOrFail();
 
         try {
-            $vote = $post->votes()->where('user_id', auth()->id())->firstOrFail();
+            $vote = $post->votes()
+                ->where('user_id', auth()->id())
+                ->firstOrFail();
         } catch (ModelNotFoundException $e) {
             $vote = new Vote;
         }

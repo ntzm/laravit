@@ -15,7 +15,8 @@ trait SortableTrait
      */
     public function scopeSort($query, $type)
     {
-        // Laravel magic turns scope{X}() into {x}(), but does not register under method_exists
+        // Laravel magic turns scope{X}() into {x}(), but does not register
+        // under method_exists
         $methodName = 'scope'.ucfirst($type);
 
         if (method_exists($this, $methodName)) {

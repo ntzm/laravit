@@ -48,7 +48,8 @@ class Helper
 
     /**
      * Escape a name.
-     * This is used in model factories, as Faker generates usernames that do not follow the validation rules.
+     * This is used in model factories, as Faker generates usernames that do not
+     * follow the validation rules.
      *
      * @param string $name The unescaped name
      * @return string The escaped name
