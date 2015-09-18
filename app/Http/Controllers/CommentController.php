@@ -22,6 +22,6 @@ class CommentController extends Controller
 
         $comment->save();
 
-        return redirect()->back();
+        return redirect()->route('sub.post.show', [$sub->name, $post->slug]);
     }
 }
