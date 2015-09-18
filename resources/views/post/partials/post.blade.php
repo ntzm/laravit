@@ -38,7 +38,7 @@
         </a>
         @if(Auth::check())
             <hr>
-            @include('partials.vote-buttons', compact('voteValue'))
+            @include('partials.vote-buttons', compact('previousVoteValue'))
         @endif
     </div><!-- /.card-block -->
 </div>

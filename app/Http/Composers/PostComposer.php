@@ -2,35 +2,49 @@
 
 namespace App\Http\Composers;
 
-use Auth;
 use Embed;
 use Illuminate\Contracts\View\View;
 
 class PostComposer
 {
+    private $post;
+
     public function compose(View $view)
     {
-        $post = $view->getData()['post'];
+        $this->post = $view->offsetGet('post');
 
-        $embedHtml = null;
+        $embedHtml = $this->getEmebdHtml();
+        $previousVoteValue = $this->getPreviousVoteValue();
 
-        $embed = Embed::make($post->content)->parseUrl();
-
-        if ($embed) {
-            $embedHtml = $embed->getHtml();
-        }
-
-        $voteValue = 0;
-
-        if (Auth::check()) {
-            $votes = $post->votes()->where('user_id', Auth::id());
-
-            if ($votes->count() > 0) {
-                $voteValue = $votes->first()->value;
-            }
-        }
-
-        $view->with('voteValue', $voteValue);
+        $view->with('previousVoteValue', $previousVoteValue);
         $view->with('embedHtml', $embedHtml);
+    }
+
+    /**
+     * Get embed HTML for post URL.
+     *
+     * @return string
+     */
+    private function getEmebdHtml()
+    {
+        $embed = Embed::make($this->post->content)->parseUrl();
+
+        return $embed ? $embed->getHtml() : null;
+    }
+
+    /**
+     * Get the user's previous vote value.
+     *
+     * @return int
+     */
+    private function getPreviousVoteValue()
+    {
+        if (auth()->check()) {
+            $votes = $this->post->votes()->where('user_id', auth()->id());
+
+            return $votes->count() > 0 ? $votes->first()->value : 0;
+        }
+
+        return 0;
     }
 }
