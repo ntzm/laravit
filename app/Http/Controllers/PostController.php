@@ -7,6 +7,7 @@ use App\Jobs\GeneratePreview;
 use App\Post;
 use App\Sub;
 use App\Vote;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class PostController extends Controller
 {
