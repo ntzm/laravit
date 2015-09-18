@@ -13,7 +13,7 @@ class Comment extends Model
     /**
      * Query comments that have no parent.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param  \Illuminate\Database\Eloquent\Builder $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeNoParent($query)

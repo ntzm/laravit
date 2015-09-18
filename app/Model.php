@@ -10,7 +10,7 @@ abstract class Model extends Eloquent
     /**
      * Check if given model is equal to this model.
      *
-     * @param Model $model The model to be tested
+     * @param  Model $model
      * @return bool
      */
     public function is($model)
@@ -21,7 +21,7 @@ abstract class Model extends Eloquent
     /**
      * Order query by random.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param  \Illuminate\Database\Eloquent\Builder $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeRandom($query)

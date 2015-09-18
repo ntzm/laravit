@@ -10,24 +10,24 @@ class Helper
     /**
      * Get active HTML class if route is active.
      *
-     * @param        $route   The name of the route to test
-     * @param string $active  The class to be returned if route is active
-     * @param string $default The class to be returned if route isn't active
+     * @param  string $routeName
+     * @param  string $activeClass
+     * @param  string $defaultClass
      * @return string
      */
-    public static function active($route, $active = 'active', $default = '')
+    public static function active($routeName, $activeClass = 'active', $defaultClass = '')
     {
         if (is_null(Route::getCurrentRoute())) {
-            return $default;
+            return $defaultClass;
         }
 
-        return Route::getCurrentRoute()->getName() == $route ? $active : $default;
+        return Route::getCurrentRoute()->getName() == $routeName ? $activeClass : $defaultClass;
     }
 
     /**
      * Check if the given string is a valid URL.
      *
-     * @param string $url The string to be checked
+     * @param  string $url
      * @return bool
      */
     public static function isValidUrl($url)
@@ -38,7 +38,7 @@ class Helper
     /**
      * Escape Markdown and convert to HTML.
      *
-     * @param string $markdown The markdown to be escaped and converted to HTML
+     * @param  string $markdown
      * @return string
      */
     public static function markdownToHtml($markdown)
@@ -48,11 +48,11 @@ class Helper
 
     /**
      * Escape a name.
-     * This is used in model factories, as Faker generates usernames that do not
-     * follow the validation rules.
+     * This is used in model factories, as Faker generates usernames that do not follow the
+     * validation rules.
      *
-     * @param string $name The unescaped name
-     * @return string The escaped name
+     * @param  string $name
+     * @return string
      */
     public static function escapeName($name)
     {

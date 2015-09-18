@@ -9,8 +9,8 @@ trait SortableTrait
     /**
      * Sort with type.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param string                                $type The sort type
+     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @param  string                                $type The sort type
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeSort($query, $type)
@@ -29,7 +29,7 @@ trait SortableTrait
     /**
      * Query hot resources.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param  \Illuminate\Database\Eloquent\Builder $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeHot($query)
@@ -43,7 +43,7 @@ trait SortableTrait
     /**
      * Query new resources.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param  \Illuminate\Database\Eloquent\Builder $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeNew($query)
@@ -54,7 +54,7 @@ trait SortableTrait
     /**
      * Query old resources.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param  \Illuminate\Database\Eloquent\Builder $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeOld($query)
@@ -65,7 +65,7 @@ trait SortableTrait
     /**
      * Query top resources.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param  \Illuminate\Database\Eloquent\Builder $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeTop($query)
